@@ -1,163 +1,218 @@
 .wrapper {
-	background: url("../images/安和桥北.jpg") no-repeat 50% 50%;
-	background-size: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 
-	width: 500px;
-	height: 500px;
+    width: 500px;
+    height: 500px;
 
-	position: absolute;
+    transform: translate(-50%, -50%);
 
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
+    background: url('../images/安和桥北.jpg') no-repeat 50% 50%;
+    background-size: contain;
 }
 
 .music-player-controller {
-	width: 320px;
-	height: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    width: 320px;
+    /*height: 80px;*/
+    padding: 8px 12px;
 
-	border-radius: 6px;
+    transform: translate(-50%, -50%);
 
-	
+    border-radius: 6px;
+    background: rgba(255, 255, 255, .42);
 
-	background: rgba(255, 255, 255, .42);
-
-	-webkit-backdrop-filter: blur(15px);
-
-	padding: 8px 12px;
-	box-sizing: border-box;
+    -webkit-backdrop-filter: blur(15px);
 }
 
-.buttons {
+.slide-bar,
+.control-panel {
 	width: 100%;
-	height: 26px;
-	background-color: #222;
 
-	margin-bottom: 13px;
-
-	padding: 0 38px;
-	box-sizing: border-box;
-}
-
-.sliderbar {
-	width: 100%;
-	height: 25px;
-	transition: color 0.2s ease-in-out;
 	color: rgba(0, 0, 0, .64);
 }
 
+.slide-bar {
+    height: 25px;
+
+    transition: color .2s ease-in-out;
+}
+
 .high-light {
-	color: rgba(255, 255, 255, .64);
+    color: rgba(255, 255, 255, .64);
 }
 
-.sliderbar::after {
-	content: "";
-	clear: both;
-	display: block;
+.slide-bar::after {
+    display: block;
+    clear: both;
+
+    content: '';
 }
 
-.sliderbar > span {
-	display: inline-block;
+.slide-bar > span {
+    display: inline-block;
+}
+
+.forward-speed, 
+.backward-speed,
+.current-time,
+.total-time {
+	font-family: 'Helvetica Neue';
+    font-size: 12px;
+    font-weight: normal;
+    vertical-align: top;
 }
 
 .current-time,
 .total-time {
-	width: 35px;
-	vertical-align: top;
+    line-height: 25px;
 
-	font-family: "Helvetica Neue";
-	font-weight: normal;
-	font-size: 12px;
-	line-height: 25px;
+    width: 35px;
 }
 
 .current-time {
-	text-align: left;
-	float: left;
+    float: left;
+    text-align: left;
 }
 
 .total-time {
-	text-align: right;
-	float: right;
+    float: right;
+    text-align: right;
 }
 
 .slider-container {
-	width: 226px;
-	height: 25px;
-	position: relative;
+    position: relative;
+
+    width: 226px;
+    height: 25px;
 }
 
 .progress-indicator {
-	width: 100%;
-	height: 100%;
-	-webkit-appearance: none;
-	margin: 0px;
-	padding: 0px;
-	border: 0 none;
-	background: transparent;
-	color: transparent;
-	overflow: visible;
-	position: absolute;
+    position: absolute;
+
+    overflow: visible;
+
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    color: transparent;
+    border: 0 none;
+    background: transparent;
+
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .progress-indicator:focus {
-	outline: none;
+    outline: none;
 }
 
 .progress-indicator::-webkit-slider-runnable-track {
-	background: transparent;
-	z-index: 1;
+    z-index: 1;
+
+    background: transparent;
 }
 
 .progress-indicator::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	height: 15px;
-	width: 15px;
-	position: relative;
-	top: -200%;
+    position: relative;
+    top: -200%;
 
-	border-radius: 15px;
-	background: #fff;
-	box-shadow: 0 0 1px 0 #333, 0 5px 2px -2px rgba(0, 0, 0, .4);
+    width: 15px;
+    height: 15px;
+
+    border: none;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 0 1px 0 #333, 0 5px 2px -2px rgba(0, 0, 0, .4);
+
+    -webkit-appearance: none;
 }
 
 .slider-runnable-track {
-	width: 100%;
-	height: 3px;
-	border-radius: 3px;
-	position: absolute;
-	top: 11px;
-	z-index: 0;
+    position: absolute;
+    z-index: 0;
+    top: 11px;
 
-	background: linear-gradient(90deg, 
-	rgba(255, 255, 255, .62) 0%,
-	rgba(255, 255, 255, .62) 24%, 
-	rgba(0, 0, 0, .62) 24%, 
-	rgba(0, 0, 0, .62) 100%);
+    width: 100%;
+    height: 3px;
+
+    border-radius: 3px;
+    background: linear-gradient(90deg,
+    rgba(255, 255, 255, .62) 0%,
+    rgba(255, 255, 255, .62) 24%,
+    rgba(0, 0, 0, .62) 24%,
+    rgba(0, 0, 0, .62) 100%);
 }
 
+/*
+			<div class="buttons">
+				<span class="forward-speed">8x</span>
+				<a href="" class="forward-button"></a>
+				<a href="" class="play-button"></a>
+				<a href="" class="pause-button"></a>
+				<a href="" class="backward-button"></a>
+				<span class="backward-speed">8x</span>
+			</div>
+*/
 
+.control-panel {
+    box-sizing: border-box;
+    height: 26px;
+    margin-top: 13px;
+    padding: 0 52px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, .3);
+}
 
+.forward-speed, 
+.backward-speed {
+	line-height: 26px;
+	width: 15px;
+}
 
+.forward-speed {
+	text-align: right;
+}
 
+.backward-speed {
+	text-align: left;
+}
 
+.control-panel .buttons {
+	margin: 0 10px;
+	flex-grow: 1;
+	display: flex;
+	justify-content: space-between;
+}
 
+.control-panel .buttons a {
+	width: 26px;
+	height: 26px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
 
+.forward-button {
+	background-image: url("../images/forward.svg");
+}
 
+.play-button {
+	background-image: url("../images/play.svg");
+}
 
+.pause-button {
+	background-image: url("../images/pause.svg");
+}
 
-
-
-
-
-
-
-
-
-
-
+.backward-button {
+	background-image: url("../images/backward.svg");
+}
