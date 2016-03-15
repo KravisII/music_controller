@@ -1,3 +1,9 @@
+html {
+	/*Copy from [Hux 黄玄's Github](https://github.com/Huxpro/huxpro.github.io)*/
+	font-family: -apple-system, -apple-system-font, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+	/* font-family: -apple-system, -apple-system-font, HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif; */
+}
+
 .wrapper {
     position: absolute;
     top: 50%;
@@ -19,7 +25,7 @@
 
     box-sizing: border-box;
     width: 320px;
-    /*height: 80px;*/
+    /*width: 480px;*/
     padding: 8px 12px;
 
     transform: translate(-50%, -50%);
@@ -32,26 +38,22 @@
 
 .slide-bar,
 .control-panel {
-	width: 100%;
+	
 
 	color: rgba(0, 0, 0, .64);
+	display: flex;
+	justify-content: space-between;
 }
 
 .slide-bar {
     height: 25px;
-
+	width: 100%;
     transition: color .2s ease-in-out;
+
 }
 
-.high-light {
+.slide-bar.high-light {
     color: rgba(255, 255, 255, .64);
-}
-
-.slide-bar::after {
-    display: block;
-    clear: both;
-
-    content: '';
 }
 
 .slide-bar > span {
@@ -62,10 +64,8 @@
 .backward-speed,
 .current-time,
 .total-time {
-	font-family: 'Helvetica Neue';
     font-size: 12px;
     font-weight: normal;
-    vertical-align: top;
 }
 
 .current-time,
@@ -76,19 +76,16 @@
 }
 
 .current-time {
-    float: left;
     text-align: left;
 }
 
 .total-time {
-    float: right;
     text-align: right;
 }
 
 .slider-container {
     position: relative;
-
-    width: 226px;
+    flex-grow: 2;
     height: 25px;
 }
 
@@ -151,24 +148,14 @@
     rgba(0, 0, 0, .62) 100%);
 }
 
-/*
-			<div class="buttons">
-				<span class="forward-speed">8x</span>
-				<a href="" class="forward-button"></a>
-				<a href="" class="play-button"></a>
-				<a href="" class="pause-button"></a>
-				<a href="" class="backward-button"></a>
-				<span class="backward-speed">8x</span>
-			</div>
-*/
-
 .control-panel {
     box-sizing: border-box;
     height: 26px;
-    margin-top: 13px;
-    padding: 0 52px;
-    display: flex;
-    justify-content: space-between;
+    /*margin-top: 6px;*/
+    /*padding: 0 52px;*/
+    margin: 6px auto 0 auto;
+
+    width: 196px;
 }
 
 .forward-speed, 
