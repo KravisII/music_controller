@@ -201,10 +201,26 @@ html {
 .play-pause-button[value="pause"] {background-image: url("../images/pause_black.min.svg");}
 .backward-button {background-image: url("../images/backward_black.min.svg");}
 
-.forward-button:hover {background-image: url("../images/forward_white.min.svg");}
-.play-pause-button[value="play"]:hover {background-image: url("../images/play_white.min.svg");}
-.play-pause-button[value="pause"]:hover {background-image: url("../images/pause_white.min.svg");}
-.backward-button:hover {background-image: url("../images/backward_white.min.svg");}
+.no-touch .forward-button:hover,
+.forward-button.hover {
+	background-image: url("../images/forward_white.min.svg");
+}
+
+.no-touch .play-pause-button[value="play"]:hover,
+.play-pause-button[value="play"].hover {
+	background-image: url("../images/play_white.min.svg");
+}
+
+.no-touch .play-pause-button[value="pause"]:hover,
+.play-pause-button[value="pause"].hover {
+	background-image: url("../images/pause_white.min.svg");
+}
+
+.no-touch .backward-button:hover,
+.backward-button.hover {
+	background-image: url("../images/backward_white.min.svg");
+}
+
 
 .forward-button.disable {background-image: url("../images/forward_opacity.min.svg");}
 .play-pause-button[value="play"].disable {background-image: url("../images/play_opacity.min.svg");}

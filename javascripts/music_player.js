@@ -6,10 +6,18 @@ var MusicController = {
 
 		// methods
 		o.initialize = function () {
+			this.deviceDetection();
 			this.setNodeReferences();
-			this.stopDefaultEvents();
+			// this.stopDefaultEvents();
 			this.addEventListeners();
 		};
+
+		o.deviceDetection = function () {
+			var musicPlayerController = document.querySelector(".music-player-controller");
+			if (navigator.userAgent.match(/like Mac OS X/i)) {
+                removeClass(musicPlayerController, "no-touch");
+            }
+		}
 
 		o.setNodeReferences = function () {
 			this.audioSource = document.querySelector(".audio-source");
@@ -28,16 +36,22 @@ var MusicController = {
 			this.backwardButton = document.querySelector(".backward-button");
 		};
 
-		o.stopDefaultEvents = function () {
-			var Atags = document.querySelectorAll(".control-panel a");
-			for (var i = Atags.length - 1; i >= 0; i--) {
-				Atags[i].onclick = function () {
-					return false;
-				};
-			}
-		};
+		// o.stopDefaultEvents = function () {
+		// 	var Atags = document.querySelectorAll(".control-panel a");
+		// 	for (var i = Atags.length - 1; i >= 0; i--) {
+		// 		Atags[i].onclick = function () {
+		// 			return false;
+		// 		};
+		// 	}
+		// };
 
 		o.addEventListeners = function () {
+			// Global
+			// MDN: By default, Safari Mobile does not use the :active 
+			// 		state unless there is a touchstart event handler on 
+			// 		the relevant element or on the <body>.
+			// document.addEventListener("touchstart", function () {});
+
 			// slide-bar: 
 
 
@@ -67,5 +81,22 @@ var MusicController = {
 		return o;
 	}
 };
+
+function hasClass(obj, cls) {
+	return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+}
+
+function addClass(obj, cls) {
+	if (!this.hasClass(obj, cls)) {
+		obj.className += " " + cls;
+	}
+}
+
+function removeClass(obj, cls) {
+	if (hasClass(obj, cls)) {
+		var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+		obj.className = obj.className.replace(reg, ' ');
+	}
+}
 
 var mc = MusicController.createNew();

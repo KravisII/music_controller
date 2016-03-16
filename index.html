@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="wrapper">
-		<div class="music-player-controller">
+		<div class="music-player-controller no-touch">
 			<audio src="./music/安和桥.mp3" class="audio-source"></audio>
 			<div class="slide-bar">
 				<span class="current-time">--:--</span>
@@ -21,10 +21,10 @@
 			<div class="control-panel">
 				<span class="forward-speed">8x</span>
 				<span class="buttons">
-					<a href="" class="forward-button"></a>
-					<a href="" class="play-pause-button" value="play"></a>
+					<input type="button" href="" class="forward-button">
+					<input type="button" href="" class="play-pause-button" value="play">
 					<!-- <a href="" class="pause-button"></a> -->
-					<a href="" class="backward-button"></a>
+					<input type="button" href="" class="backward-button">
 				</span>
 				<span class="backward-speed">8x</span>
 			</div>

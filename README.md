@@ -23,3 +23,5 @@
 - [ ] 在 iOS 的 Safari 中 :hover 伪类的不合理使用；
 - [ ] 没有除去 iOS 的 highlight 显示；[Remove Gray Highlight When Tapping Links in Mobile Safari](https://css-tricks.com/snippets/css/remove-gray-highlight-when-tapping-links-in-mobile-safari/)
 - [ ] 未使用雪碧图加载所有 icons；
+- [ ] iOS 在控制中心暂停后图标不变；
+- [ ] iOS 在控制中心名称；
