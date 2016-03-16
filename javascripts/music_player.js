@@ -36,21 +36,10 @@ var MusicController = {
 			this.backwardButton = document.querySelector(".backward-button");
 		};
 
-		// o.stopDefaultEvents = function () {
-		// 	var Atags = document.querySelectorAll(".control-panel a");
-		// 	for (var i = Atags.length - 1; i >= 0; i--) {
-		// 		Atags[i].onclick = function () {
-		// 			return false;
-		// 		};
-		// 	}
-		// };
-
 		o.addEventListeners = function () {
 			// Global
-			// MDN: By default, Safari Mobile does not use the :active 
-			// 		state unless there is a touchstart event handler on 
-			// 		the relevant element or on the <body>.
-			// document.addEventListener("touchstart", function () {});
+			// css-tricks: Allow :active styles to work in your CSS on a page in Mobile Safari
+			document.addEventListener("touchstart", function(){}, true);
 
 			// slide-bar: 
 
