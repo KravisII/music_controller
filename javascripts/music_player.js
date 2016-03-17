@@ -3,6 +3,7 @@ var MusicController = {
 		var o = {};
 		// properties
 		o.name = "MusicController";
+		o.musicStatus = null;
 
 		// methods
 		o.initialize = function () {
@@ -38,11 +39,13 @@ var MusicController = {
 
 		o.addEventListeners = function () {
 			// Global
-			// css-tricks: Allow :active styles to work in your CSS on a page in Mobile Safari
+				// css-tricks: Allow :active styles to work in your CSS on a page in Mobile Safari
 			document.addEventListener("touchstart", function(){}, true);
 
 			// slide-bar: 
-
+			this.progressIndicator.addEventListener("input", this.valueChanging);
+			this.progressIndicator.addEventListener("mouseup", this.valueChanged);
+			this.progressIndicator.addEventListener("touchend", this.valueChanged);
 
 			// control-panel: 
 			this.forwardButton.addEventListener("click", this.forwardButtonClick);
@@ -55,6 +58,23 @@ var MusicController = {
 			this.audioSource.addEventListener("pause", this.audioIsPausing);
 			this.audioSource.addEventListener("ratechange", this.onRateChanged);
 			this.audioSource.addEventListener("timeupdate", this.onTimeUpdate);
+		};
+
+		// slide-bar: 
+		o.valueChanging = function () {
+			console.log("Value Change");
+			if (o.musicStatus == null) {
+				o.musicStatus = o.audioSource.paused;
+			}
+			o.pauseMusic();
+			o.audioSource.currentTime = o.progressIndicator.value;
+		};
+
+		o.valueChanged = function () {
+			if (o.musicStatus == false) {
+				o.playMusic();
+			}
+			o.musicStatus = null;
 		};
 
 		// control-panel: 
@@ -113,8 +133,6 @@ var MusicController = {
 		};
 
 		o.onRateChanged = function () {
-			console.log(o.audioSource.playbackRate);
-
 			var _showSpeed = null;
 			var _hideSpeed = null;
 			if (o.audioSource.playbackRate < 0) {
@@ -124,12 +142,9 @@ var MusicController = {
 				_showSpeed = o.backwardSpeed;
 				_hideSpeed = o.forwardSpeed;
 			}
-
 			_showSpeed.style.visibility = "visible";
 			_hideSpeed.removeAttribute("style");
-
 			_showSpeed.innerText = Math.abs(o.audioSource.playbackRate);
-
 			if (o.audioSource.playbackRate == 1) {
 				_showSpeed.removeAttribute("style");
 			}
@@ -138,7 +153,7 @@ var MusicController = {
 		o.onTimeUpdate = function () {
 			o.currentTime.innerText = o.formatPlayTime(o.audioSource.currentTime);
 			o.progressIndicator.value = parseInt(o.audioSource.currentTime, 10);
-			var _percent = parseInt(((o.audioSource.currentTime / o.audioSource.duration) * 100), 10);
+			var _percent = (o.audioSource.currentTime / o.audioSource.duration) * 100;
 			o.sliderRunnableTrack.style.background = "linear-gradient(90deg, rgba(255, 255, 255, .62) 0%, rgba(255, 255, 255, .62) "+ _percent + "%, rgba(0, 0, 0, .62) "+ _percent + "%, rgba(0, 0, 0, .62) 100%)";
 		};
 
