@@ -21,9 +21,9 @@
 
 ### 已发现错误
 
-- [x] 在 iOS 的 Safari 中 :hover 伪类的不合理使用；
+- [x] 在 iOS 的 Safari 中 `:hover` 伪类的不合理使用；
 - [x] 没有除去 iOS 的 highlight 显示；[Remove Gray Highlight When Tapping Links in Mobile Safari](https://css-tricks.com/snippets/css/remove-gray-highlight-when-tapping-links-in-mobile-safari/)
 - [x] 未使用雪碧图加载所有 icons；
-- [ ] 按钮的动画效果错误；
+      使用 sprite icons 后的按钮动画效果会出现错误，因此暂时除去动画，将在后续版本中加入。`<input>`等替代元素（[Replaced Elements](http://reference.sitepoint.com/css/replacedelements)）不能使用 `::before` 等伪元素，因而不能直接实现动画（[Fade Image Into Another (within a Sprite)](https://css-tricks.com/fade-image-within-sprite/)）。
 - [ ] iOS 在控制中心暂停后图标不变；
 - [ ] iOS 在控制中心名称；
