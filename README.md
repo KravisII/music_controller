@@ -1,6 +1,7 @@
 # music_player-1.1
 [This is demo](http://www.kravis.me/demo5)
 ![music_player_1.1](README-files/music_player_1.1.png)
+
 ### Version 1 基本的音乐播放器界面
 - [x] #### Mar 15, 2016 Version 1.1
 
@@ -25,8 +26,8 @@
       - [ ] Safari 9.0 + 检测，若不是，则使 `music-player-controller` 的不透明度增强。
       - [ ] 只在需要的地方显示 `div.tip`，并优化其显示效果，JavaScript 与 HTML 分离；
 
-### 已发现错误
 
+### 待优化
 - [x] 在 iOS 的 Safari 中 `:hover` 伪类的不合理使用；
 - [x] 没有除去 iOS 的 highlight 显示；[Remove Gray Highlight When Tapping Links in Mobile Safari](https://css-tricks.com/snippets/css/remove-gray-highlight-when-tapping-links-in-mobile-safari/)
 - [x] 未使用雪碧图加载所有 icons；
@@ -34,6 +35,4 @@
 - [x] iOS 在控制中心暂停后图标不变；
 - [ ] iOS 9.2.1 下的 `<input>` 出现异常白色线条；
 - [ ] iOS 在控制中心名称。
-
-<!-- ### 待优化 -->
-
+- [ ] Android 下的 :hover, :active 等伪类未适配
