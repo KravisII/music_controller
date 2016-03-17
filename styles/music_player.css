@@ -162,7 +162,6 @@ html {
 	line-height: 26px;
 	width: 15px;
 	visibility: hidden;
-	/*visibility: visible;*/
 }
 
 .forward-speed::after, 
@@ -235,14 +234,22 @@ html {
 {background-position: -26px -78px;}
 
 
-.forward-button.disable 
+.forward-button:disabled,
+ .forward-button:disabled:active,
+ .forward-button:disabled:hover
 {background-position: -52px 0px;}
 
-.play-pause-button[value="play"].disable 
+.play-pause-button[value="play"]:disabled,
+ .play-pause-button[value="play"]:disabled:active,
+ .play-pause-button[value="play"]:disabled:hover
 {background-position: -52px -26px;}
 
-.play-pause-button[value="pause"].disable 
+.play-pause-button[value="pause"]:disabled,
+ .play-pause-button[value="pause"]:disabled:active,
+ .play-pause-button[value="pause"]:disabled:hover
 {background-position: -52px -52px;}
 
-.backward-button.disable 
+.backward-button:disabled,
+ .backward-button:disabled:active,
+ .backward-button:disabled:hover
 {background-position: -52px -78px;}

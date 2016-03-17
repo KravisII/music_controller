@@ -48,21 +48,92 @@ var MusicController = {
 			this.forwardButton.addEventListener("click", this.forwardButtonClick);
 			this.playPauseButton.addEventListener("click", this.playPauseButtonClick);
 			this.backwardButton.addEventListener("click", this.backwardButtonClick);
+
+			// audioSource
+			this.audioSource.addEventListener("canplaythrough", this.audioCanPlaytTrough);
+			this.audioSource.addEventListener("play", this.audioIsPlaying);
+			this.audioSource.addEventListener("pause", this.audioIsPausing);
+			this.audioSource.addEventListener("ratechange", this.onRateChanged);
+			
+		};
+
+		// control-panel: 
+		o.forwardButtonClick = function () {
+			o.changePlayRate(-1);
 		};
 
 		o.playPauseButtonClick = function () {
-			o.controlMusic = this.getAttribute("value") === "play" ? o.playMusic : o.pauseMusic;
-			o.controlMusic();
+			var _controlMusic = this.getAttribute("value") === "play" ? o.playMusic : o.pauseMusic;
+			_controlMusic();
 		};
 
 		o.playMusic = function () {
-			this.playPauseButton.setAttribute("value", "pause");
-			this.audioSource.play();
+			o.audioSource.play();
 		};
 
 		o.pauseMusic = function () {
-			this.playPauseButton.setAttribute("value", "play");
-			this.audioSource.pause();
+			o.audioSource.pause();
+			o.audioSource.playbackRate = 1;
+		};
+
+		o.backwardButtonClick = function () {
+			o.changePlayRate(1);
+		};
+
+		o.changePlayRate = function (rateFlag) {
+			var _nums = [-8, -6, -4, -2, 1, 2, 4, 6, 8];
+			var _i = _nums.indexOf(o.audioSource.playbackRate);
+			_i += rateFlag;
+			if (_i == -1 || _i == 9) {
+				_i = _nums.indexOf(1);
+			}
+			o.audioSource.playbackRate = _nums[_i];
+		};
+
+		// audioSource
+		o.audioCanPlaytTrough = function () {
+			o.removeDisabled(o.playPauseButton);
+			o.removeDisabled(o.forwardButton);
+			o.removeDisabled(o.backwardButton);
+		};
+
+		o.removeDisabled = function (object) {
+			object.removeAttribute("disabled");
+		};
+
+		o.audioIsPlaying = function () {
+			o.playPauseButton.setAttribute("value", "pause");
+		};
+
+		o.audioIsPausing = function () {
+			o.playPauseButton.setAttribute("value", "play");
+		};
+
+		o.onRateChanged = function () {
+			console.log(o.audioSource.playbackRate);
+
+			var _showSpeed = null;
+			var _hideSpeed = null;
+			if (o.audioSource.playbackRate < 0) {
+				_showSpeed = o.forwardSpeed;
+				_hideSpeed = o.backwardSpeed;
+			} else {
+				_showSpeed = o.backwardSpeed;
+				_hideSpeed = o.forwardSpeed;
+			}
+
+			_showSpeed.style.visibility = "visible";
+			_hideSpeed.removeAttribute("style");
+
+			_showSpeed.innerText = Math.abs(o.audioSource.playbackRate);
+
+			if (o.audioSource.playbackRate == 1) {
+				_showSpeed.removeAttribute("style");
+			}
+		};
+
+		o.loadMusic = function () {
+			o.audioSource.load();
 		};
 
 		// Execute functions and return object
