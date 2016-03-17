@@ -15,7 +15,7 @@ var MusicController = {
 		o.deviceDetection = function () {
 			var musicPlayerController = document.querySelector(".music-player-controller");
 			if (navigator.userAgent.match(/like Mac OS X/i)) {
-                removeClass(musicPlayerController, "no-touch");
+                ObjClass.removeClass(musicPlayerController, "no-touch");
             }
 		}
 
@@ -58,10 +58,6 @@ var MusicController = {
 		};
 
 		// control-panel: 
-		o.forwardButtonClick = function () {
-			o.changePlayRate(-1);
-		};
-
 		o.playPauseButtonClick = function () {
 			var _controlMusic = this.getAttribute("value") === "play" ? o.playMusic : o.pauseMusic;
 			_controlMusic();
@@ -74,6 +70,10 @@ var MusicController = {
 		o.pauseMusic = function () {
 			o.audioSource.pause();
 			o.audioSource.playbackRate = 1;
+		};
+
+		o.forwardButtonClick = function () {
+			o.changePlayRate(-1);
 		};
 
 		o.backwardButtonClick = function () {
@@ -142,21 +142,23 @@ var MusicController = {
 	}
 };
 
-function hasClass(obj, cls) {
-	return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
-}
+var ObjClass = {
+	hasClass: function (obj, cls) {
+		return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+	},
 
-function addClass(obj, cls) {
-	if (!this.hasClass(obj, cls)) {
-		obj.className += " " + cls;
-	}
-}
+	addClass: function (obj, cls) {
+		if (!this.hasClass(obj, cls)) {
+			obj.className += " " + cls;
+		}
+	},
 
-function removeClass(obj, cls) {
-	if (hasClass(obj, cls)) {
-		var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
-		obj.className = obj.className.replace(reg, ' ');
+	removeClass: function (obj, cls) {
+		if (this.hasClass(obj, cls)) {
+			var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+			obj.className = obj.className.replace(reg, ' ');
+		}
 	}
-}
+};
 
 var mc = MusicController.createNew();
