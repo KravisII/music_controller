@@ -66,6 +66,8 @@ html {
 .total-time {
     font-size: 12px;
     font-weight: normal;
+    -webkit-user-select: none;
+    cursor: default;
 }
 
 .current-time,
@@ -151,10 +153,7 @@ html {
 .control-panel {
     box-sizing: border-box;
     height: 26px;
-    /*margin-top: 6px;*/
-    /*padding: 0 52px;*/
     margin: 6px auto 0 auto;
-
     width: 196px;
 }
 
@@ -162,6 +161,13 @@ html {
 .backward-speed {
 	line-height: 26px;
 	width: 15px;
+	visibility: hidden;
+	/*visibility: visible;*/
+}
+
+.forward-speed::after, 
+.backward-speed::after {
+	content: "x";
 }
 
 .forward-speed {
@@ -188,11 +194,12 @@ html {
 	background-color: transparent;
 	width: 26px;
 	height: 26px;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
-    transition: background-image 0.2s ease-in-out;
+    transition: background 0.2s ease-in-out;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+    background-image: url("../images/player_icons_sprite.svg");
+    background-size: 78px 104px;
+	background-repeat: no-repeat;
 }
 
 .control-panel .buttons input:focus {
@@ -203,33 +210,21 @@ html {
 	cursor: default;
 }
 
-.forward-button {background-image: url("../images/forward_black.min.svg");}
-.play-pause-button[value="play"] {background-image: url("../images/play_black.min.svg");}
-.play-pause-button[value="pause"] {background-image: url("../images/pause_black.min.svg");}
-.backward-button {background-image: url("../images/backward_black.min.svg");}
+.forward-button {background-position: 0px 0px;}
+.play-pause-button[value="play"] {background-position: 0px -26px;}
+.play-pause-button[value="pause"] {background-position: 0px -52px;}
+.backward-button {background-position: 0px -78px;}
 
-.no-touch .forward-button:hover,
-.forward-button.active {
-	background-image: url("../images/forward_white.min.svg");
-}
+.music-player-controller:not(.no-touch) .forward-button:active,
+.no-touch .forward-button:hover {background-position: -26px 0px;}
+.music-player-controller:not(.no-touch) .play-pause-button[value="play"]:active,
+.no-touch .play-pause-button[value="play"]:hover {background-position: -26px -26px;}
+.music-player-controller:not(.no-touch) .play-pause-button[value="pause"]:active,
+.no-touch .play-pause-button[value="pause"]:hover {background-position: -26px -52px;}
+.music-player-controller:not(.no-touch) .backward-button:active,
+.no-touch .backward-button:hover {background-position: -26px -78px;}
 
-.no-touch .play-pause-button[value="play"]:hover,
-.play-pause-button[value="play"].active {
-	background-image: url("../images/play_white.min.svg");
-}
-
-.no-touch .play-pause-button[value="pause"]:hover,
-.play-pause-button[value="pause"].active {
-	background-image: url("../images/pause_white.min.svg");
-}
-
-.no-touch .backward-button:hover,
-.backward-button.active {
-	background-image: url("../images/backward_white.min.svg");
-}
-
-
-.forward-button.disable {background-image: url("../images/forward_opacity.min.svg");}
-.play-pause-button[value="play"].disable {background-image: url("../images/play_opacity.min.svg");}
-.play-pause-button[value="pause"].disable {background-image: url("../images/pause_opacity.min.svg");}
-.backward-button.disable {background-image: url("../images/backward_opacity.min.svg");}
+.forward-button.disable {background-position: -52px 0px;}
+.play-pause-button[value="play"].disable {background-position: -52px -26px;}
+.play-pause-button[value="pause"].disable {background-position: -52px -52px;}
+.backward-button.disable {background-position: -52px -78px;}
