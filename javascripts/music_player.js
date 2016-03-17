@@ -4,16 +4,17 @@ var MusicController = {
 		// properties
 		o.name = "MusicController";
 		o.musicStatus = null;
+		o.userAgent = null;
 
 		// methods
 		o.initialize = function () {
 			this.deviceDetection();
 			this.setNodeReferences();
-			// this.stopDefaultEvents();
 			this.addEventListeners();
 		};
 
-		o.deviceDetection = function () {
+		o.deviceDetection = function () { 
+			// Should rewrite
 			var musicPlayerController = document.querySelector(".music-player-controller");
 			if (navigator.userAgent.match(/like Mac OS X/i)) {
                 ObjClass.removeClass(musicPlayerController, "no-touch");
@@ -101,10 +102,15 @@ var MusicController = {
 		};
 
 		o.changePlayRate = function (rateFlag) {
-			var _nums = [-8, -6, -4, -2, 1, 2, 4, 6, 8];
+			var _numsSafari = [-8, -6, -4, -2, 1, 2, 4, 6, 8];
+			var _numsChrome = [1, 2, 4];
+
+			//  浏览器监测 －> _nums
+
+			var _nums = _numsChrome;
 			var _i = _nums.indexOf(o.audioSource.playbackRate);
 			_i += rateFlag;
-			if (_i == -1 || _i == 9) {
+			if (_i == -1 || _i == (_nums.length)) {
 				_i = _nums.indexOf(1);
 			}
 			o.audioSource.playbackRate = _nums[_i];

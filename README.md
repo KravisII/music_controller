@@ -34,5 +34,27 @@
       使用 sprite icons 后的按钮动画效果会出现错误，因此暂时除去动画，将在后续版本中加入。`<input>`等替代元素（[Replaced Elements](http://reference.sitepoint.com/css/replacedelements)）不能使用 `::before` 等伪元素，因而不能直接实现动画（[Fade Image Into Another (within a Sprite)](https://css-tricks.com/fade-image-within-sprite/)）。
 - [x] iOS 在控制中心暂停后图标不变；
 - [ ] iOS 9.2.1 下的 `<input>` 出现异常白色线条；
-- [ ] iOS 在控制中心名称。
-- [ ] Android 下的 :hover, :active 等伪类未适配
+- [ ] iOS 在控制中心名称；
+- [ ] Android 下的 :hover, :active 等伪类未适配；
+- [ ] iOS 下的点击 slide bar 即修改 value。
+- [ ] slide bar 滑动效果
+- [ ] Chrome 不能快退，速度范围 0 - 4，背景无滤镜
+
+### 测试 userAgent
+
+```
+OS X Chrome:
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36
+
+OS X Safari:
+Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/601.4.4 (KHTML, like Gecko) Version/9.0.3 Safari/601.4.4
+
+iOS 9.2 on iPhone 4s
+Mozilla/5.0 (iPhone; CPU iPhone OS 9_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13C75 Safari/601.1
+
+iOS 9.2 on iPhone 6s Plus
+Mozilla/5.0 (iPhone; CPU iPhone OS 9_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13C75 Safari/601.1
+
+iOS 9.2 on iPad Pro
+Mozilla/5.0 (iPad; CPU OS 9_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13C75 Safari/601.1
+```
