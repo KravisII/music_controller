@@ -54,7 +54,7 @@ var MusicController = {
 			this.audioSource.addEventListener("play", this.audioIsPlaying);
 			this.audioSource.addEventListener("pause", this.audioIsPausing);
 			this.audioSource.addEventListener("ratechange", this.onRateChanged);
-			
+			this.audioSource.addEventListener("timeupdate", this.onTimeUpdate);
 		};
 
 		// control-panel: 
@@ -92,13 +92,15 @@ var MusicController = {
 
 		// audioSource
 		o.audioCanPlaytTrough = function () {
-			o.removeDisabled(o.playPauseButton);
-			o.removeDisabled(o.forwardButton);
-			o.removeDisabled(o.backwardButton);
+			o.removeDisabled();
+			o.totalTime.innerText = o.formatPlayTime(o.audioSource.duration);
+			o.currentTime.innerText = o.formatPlayTime(o.audioSource.currentTime);
 		};
 
-		o.removeDisabled = function (object) {
-			object.removeAttribute("disabled");
+		o.removeDisabled = function () {
+			o.playPauseButton.removeAttribute("disabled");
+			o.forwardButton.removeAttribute("disabled");
+			o.backwardButton.removeAttribute("disabled");
 		};
 
 		o.audioIsPlaying = function () {
@@ -131,6 +133,19 @@ var MusicController = {
 				_showSpeed.removeAttribute("style");
 			}
 		};
+
+		o.onTimeUpdate = function () {
+			o.currentTime.innerText = o.formatPlayTime(o.audioSource.currentTime);
+		};
+
+		o.formatPlayTime = function (time) {
+			var _secTime = parseInt(time, 10);
+			var _minutes = Math.floor(_secTime / 60);
+			var _seconds = _secTime - _minutes * 60;
+			if (_minutes < 10) {_minutes = "0" + _minutes;}
+			if (_seconds < 10) {_seconds = "0" + _seconds;}
+			return _minutes + ":" + _seconds;
+		}
 
 		o.loadMusic = function () {
 			o.audioSource.load();

@@ -73,8 +73,7 @@ html {
 .current-time,
 .total-time {
     line-height: 25px;
-
-    width: 35px;
+    width: 40px;
 }
 
 .current-time {
@@ -87,7 +86,7 @@ html {
 
 .slider-container {
     position: relative;
-    flex-grow: 2;
+    flex-grow: 1;
     height: 25px;
 }
 
