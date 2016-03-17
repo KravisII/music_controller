@@ -24,8 +24,8 @@ html {
     left: 50%;
 
     box-sizing: border-box;
-    width: 320px;
-    /*width: 480px;*/
+    /* width: 320px; */
+    width: 420px;
     padding: 8px 12px;
 
     transform: translate(-50%, -50%);
@@ -144,8 +144,8 @@ html {
     border-radius: 3px;
     background: linear-gradient(90deg,
     rgba(255, 255, 255, .62) 0%,
-    rgba(255, 255, 255, .62) 24%,
-    rgba(0, 0, 0, .62) 24%,
+    rgba(255, 255, 255, .62) 0%,
+    rgba(0, 0, 0, .62) 0%,
     rgba(0, 0, 0, .62) 100%);
 }
 

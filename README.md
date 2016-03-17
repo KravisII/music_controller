@@ -14,7 +14,7 @@
 
       - [x] 播放 / 暂停
       - [x] 快进 / 快退
-      - [ ] 进度条显示
+      - [x] 进度条显示
       - [ ] 进度条拖动
       - [x] 时间显示
 
@@ -25,8 +25,9 @@
 - [x] 未使用雪碧图加载所有 icons；
       使用 sprite icons 后的按钮动画效果会出现错误，因此暂时除去动画，将在后续版本中加入。`<input>`等替代元素（[Replaced Elements](http://reference.sitepoint.com/css/replacedelements)）不能使用 `::before` 等伪元素，因而不能直接实现动画（[Fade Image Into Another (within a Sprite)](https://css-tricks.com/fade-image-within-sprite/)）。
 - [x] iOS 在控制中心暂停后图标不变；
-- [ ] iOS 在控制中心名称；
+- [ ] iOS 在控制中心名称。
 
 ### 待优化
 
 - [ ] 只在 iOS 显示 `div.tip`，并优化其显示效果，JavaScript 与 HTML 分离；
+- [ ] Safari 9.0 + 检测，若不是，则使 `music-player-controller` 的不透明度增强。

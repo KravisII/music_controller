@@ -95,6 +95,7 @@ var MusicController = {
 			o.removeDisabled();
 			o.totalTime.innerText = o.formatPlayTime(o.audioSource.duration);
 			o.currentTime.innerText = o.formatPlayTime(o.audioSource.currentTime);
+			o.progressIndicator.max = parseInt(o.audioSource.duration, 10);
 		};
 
 		o.removeDisabled = function () {
@@ -136,6 +137,9 @@ var MusicController = {
 
 		o.onTimeUpdate = function () {
 			o.currentTime.innerText = o.formatPlayTime(o.audioSource.currentTime);
+			o.progressIndicator.value = parseInt(o.audioSource.currentTime, 10);
+			var _percent = parseInt(((o.audioSource.currentTime / o.audioSource.duration) * 100), 10);
+			o.sliderRunnableTrack.style.background = "linear-gradient(90deg, rgba(255, 255, 255, .62) 0%, rgba(255, 255, 255, .62) "+ _percent + "%, rgba(0, 0, 0, .62) "+ _percent + "%, rgba(0, 0, 0, .62) 100%)";
 		};
 
 		o.formatPlayTime = function (time) {
