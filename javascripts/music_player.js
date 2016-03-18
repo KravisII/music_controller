@@ -5,6 +5,7 @@ var MusicController = {
 		o.name = "MusicController";
 		o.musicStatus = null;
 		o.playRateValues = null;
+		o._preRateFlag = null;
 
 		// methods
 		o.initialize = function () {
@@ -74,7 +75,7 @@ var MusicController = {
 			this.backwardButton.addEventListener("click", this.backwardButtonClick);
 
 			// audioSource
-			this.audioSource.addEventListener("canplaythrough", this.audioCanPlaytTrough);
+			this.audioSource.addEventListener("canplaythrough", this.audioCanPlayTrough);
 			this.audioSource.addEventListener("play", this.audioIsPlaying);
 			this.audioSource.addEventListener("pause", this.audioIsPausing);
 			this.audioSource.addEventListener("ratechange", this.onRateChanged);
@@ -123,15 +124,26 @@ var MusicController = {
 
 		o.changePlayRate = function (rateFlag) {
 			var _i = o.playRateValues.indexOf(o.audioSource.playbackRate);
+			console.log("1:  " + _i);
+			if (o._preRateFlag != rateFlag) {
+				_i = o.playRateValues.indexOf(1);
+				o._preRateFlag = rateFlag;
+				console.log("2:  " + _i);
+			}
+
 			_i += rateFlag;
+			console.log("3:  " + _i);
+
 			if (_i == -1 || _i == (o.playRateValues.length)) {
 				_i = o.playRateValues.indexOf(1);
+				console.log("4:  " + _i);
 			}
 			o.audioSource.playbackRate = o.playRateValues[_i];
+			console.log("5:  " + _i);
 		};
 
 		// audioSource
-		o.audioCanPlaytTrough = function () {
+		o.audioCanPlayTrough = function () {
 			o.removeButtonsDisabled();
 			o.totalTime.innerText = o.formatPlayTime(o.audioSource.duration);
 			o.currentTime.innerText = o.formatPlayTime(o.audioSource.currentTime);
