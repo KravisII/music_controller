@@ -11,6 +11,7 @@ var MusicController = {
 		o.initialize = function () {
 			this.deviceDetection();
 			this.setNodeReferences();
+			this.dataInitialize();
 			this.addEventListeners();
 		};
 
@@ -26,8 +27,8 @@ var MusicController = {
                 ObjClass.removeClass(musicPlayerController, "no-touch");
             }
 
-            if (is.chrome() && is.desktop()) {
-            	ObjClass.addClass(musicPlayerController, "chrome");
+            if (is.not.safari() && is.desktop()) {
+            	ObjClass.addClass(musicPlayerController, "no-safari");
             }
 		};
 
@@ -35,10 +36,16 @@ var MusicController = {
 			var _numsSafari = [-8, -6, -4, -2, 1, 2, 4, 6, 8];
 			var _numsChrome = [1, 2, 4];
 
-			if (is.safari()) {
+			if (is.desktop()) {
+				if (is.safari()) {
+					o.playRateValues = _numsSafari;
+				} else if (is.chrome()) {
+					o.playRateValues = _numsChrome;
+				} else if (is.firefox()) {
+					o.playRateValues = _numsChrome;
+				}
+			} else {
 				o.playRateValues = _numsSafari;
-			} else if (is.chrome()) {
-				o.playRateValues = _numsChrome;
 			}
 		};
 
@@ -57,6 +64,11 @@ var MusicController = {
 			this.forwardButton = document.querySelector(".forward-button");
 			this.playPauseButton = document.querySelector(".play-pause-button");
 			this.backwardButton = document.querySelector(".backward-button");
+		};
+
+		o.dataInitialize = function () {
+			this.progressIndicator.value = 0;
+			this.currentTime.innerText = this.formatPlayTime(this.audioSource.currentTime);
 		};
 
 		o.addEventListeners = function () {
@@ -136,17 +148,18 @@ var MusicController = {
 
 		// audioSource
 		o.audioCanPlayTrough = function () {
-			o.removeButtonsDisabled();
-			o.totalTime.innerText = o.formatPlayTime(o.audioSource.duration);
-			o.currentTime.innerText = o.formatPlayTime(o.audioSource.currentTime);
+			console.log("audioCanPlayTrough");
 			o.progressIndicator.max = parseInt(o.audioSource.duration, 10);
+			o.totalTime.innerText = o.formatPlayTime(o.audioSource.duration);
+			o.removeButtonsDisabled();
 		};
 
 		o.removeButtonsDisabled = function () {
 			o.playPauseButton.removeAttribute("disabled");
 			o.backwardButton.removeAttribute("disabled");
-			if (is.not.chrome()) {
-				o.forwardButton.removeAttribute("disabled");
+			o.forwardButton.removeAttribute("disabled");
+			if (is.chrome() || is.firefox()) {
+				o.forwardButton.setAttribute("disabled", "disabled");
 			}
 		};
 
