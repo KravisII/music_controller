@@ -61,7 +61,7 @@ var MusicController = {
 
 		o.addEventListeners = function () {
 			// Global
-				// css-tricks: Allow :active styles to work in your CSS on a page in Mobile Safari
+				// css-tricks: Allow `:active` styles to work in your CSS on a page in Mobile Safari
 			document.addEventListener("touchstart", function(){}, true);
 
 			// slide-bar: 
@@ -84,7 +84,6 @@ var MusicController = {
 
 		// slide-bar: 
 		o.valueChanging = function () {
-			console.log("Value Change");
 			if (o.musicStatus == null) {
 				o.musicStatus = o.audioSource.paused;
 			}
@@ -124,22 +123,15 @@ var MusicController = {
 
 		o.changePlayRate = function (rateFlag) {
 			var _i = o.playRateValues.indexOf(o.audioSource.playbackRate);
-			console.log("1:  " + _i);
 			if (o._preRateFlag != rateFlag) {
 				_i = o.playRateValues.indexOf(1);
 				o._preRateFlag = rateFlag;
-				console.log("2:  " + _i);
 			}
-
 			_i += rateFlag;
-			console.log("3:  " + _i);
-
 			if (_i == -1 || _i == (o.playRateValues.length)) {
 				_i = o.playRateValues.indexOf(1);
-				console.log("4:  " + _i);
 			}
 			o.audioSource.playbackRate = o.playRateValues[_i];
-			console.log("5:  " + _i);
 		};
 
 		// audioSource
