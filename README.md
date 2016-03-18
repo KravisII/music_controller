@@ -38,7 +38,7 @@
 - [ ] Android 下的 :hover, :active 等伪类未适配；
 - [ ] iOS 下的点击 slide bar 即修改 value。
 - [ ] slide bar 滑动效果
-- [ ] Chrome 不能快退，速度范围 0 - 4，背景无滤镜
+- [x] Chrome 不能快退，速度范围 0 - 4，背景无滤镜
 
 ### 测试 userAgent
 

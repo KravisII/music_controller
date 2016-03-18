@@ -27,6 +27,10 @@ html {
     -webkit-backdrop-filter: blur(15px);
 }
 
+.music-player-controller.chrome {
+    background: rgba(255, 255, 255, .62);
+}
+
 .slide-bar,
 .control-panel {
 	color: rgba(0, 0, 0, .64);

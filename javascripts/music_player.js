@@ -4,7 +4,7 @@ var MusicController = {
 		// properties
 		o.name = "MusicController";
 		o.musicStatus = null;
-		o.userAgent = null;
+		o.playRateValues = null;
 
 		// methods
 		o.initialize = function () {
@@ -14,12 +14,32 @@ var MusicController = {
 		};
 
 		o.deviceDetection = function () { 
-			// Should rewrite
+			o.interfaceControl();
+			o.playRateControl();
+		};
+
+		o.interfaceControl = function () {
 			var musicPlayerController = document.querySelector(".music-player-controller");
-			if (navigator.userAgent.match(/like Mac OS X/i)) {
+
+			if (is.ios()) {
                 ObjClass.removeClass(musicPlayerController, "no-touch");
             }
-		}
+
+            if (is.chrome() && is.desktop()) {
+            	ObjClass.addClass(musicPlayerController, "chrome");
+            }
+		};
+
+		o.playRateControl = function () {
+			var _numsSafari = [-8, -6, -4, -2, 1, 2, 4, 6, 8];
+			var _numsChrome = [1, 2, 4];
+
+			if (is.safari()) {
+				o.playRateValues = _numsSafari;
+			} else if (is.chrome()) {
+				o.playRateValues = _numsChrome;
+			}
+		};
 
 		o.setNodeReferences = function () {
 			this.audioSource = document.querySelector(".audio-source");
@@ -102,32 +122,28 @@ var MusicController = {
 		};
 
 		o.changePlayRate = function (rateFlag) {
-			var _numsSafari = [-8, -6, -4, -2, 1, 2, 4, 6, 8];
-			var _numsChrome = [1, 2, 4];
-
-			//  浏览器监测 －> _nums
-
-			var _nums = _numsChrome;
-			var _i = _nums.indexOf(o.audioSource.playbackRate);
+			var _i = o.playRateValues.indexOf(o.audioSource.playbackRate);
 			_i += rateFlag;
-			if (_i == -1 || _i == (_nums.length)) {
-				_i = _nums.indexOf(1);
+			if (_i == -1 || _i == (o.playRateValues.length)) {
+				_i = o.playRateValues.indexOf(1);
 			}
-			o.audioSource.playbackRate = _nums[_i];
+			o.audioSource.playbackRate = o.playRateValues[_i];
 		};
 
 		// audioSource
 		o.audioCanPlaytTrough = function () {
-			o.removeDisabled();
+			o.removeButtonsDisabled();
 			o.totalTime.innerText = o.formatPlayTime(o.audioSource.duration);
 			o.currentTime.innerText = o.formatPlayTime(o.audioSource.currentTime);
 			o.progressIndicator.max = parseInt(o.audioSource.duration, 10);
 		};
 
-		o.removeDisabled = function () {
+		o.removeButtonsDisabled = function () {
 			o.playPauseButton.removeAttribute("disabled");
-			o.forwardButton.removeAttribute("disabled");
 			o.backwardButton.removeAttribute("disabled");
+			if (is.not.chrome()) {
+				o.forwardButton.removeAttribute("disabled");
+			}
 		};
 
 		o.audioIsPlaying = function () {
