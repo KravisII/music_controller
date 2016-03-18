@@ -23,7 +23,8 @@
 
       完成尽量多的平台的各个浏览器（尤其是 iOS, OS X 下的浏览器）的适配、各项优化。
 
-      - [ ] Safari 9.0 + 检测，若不是，则使 `music-player-controller` 的不透明度增强。
+      - [x] Safari 9.0 + 检测，若不是，则使 `music-player-controller` 的不透明度增强；
+      - [x] 修复 preload 的相关问题。
       - [ ] 只在需要的地方显示 `div.tip`，并优化其显示效果，JavaScript 与 HTML 分离；
 
 
@@ -33,28 +34,10 @@
 - [x] 未使用雪碧图加载所有 icons；
       使用 sprite icons 后的按钮动画效果会出现错误，因此暂时除去动画，将在后续版本中加入。`<input>`等替代元素（[Replaced Elements](http://reference.sitepoint.com/css/replacedelements)）不能使用 `::before` 等伪元素，因而不能直接实现动画（[Fade Image Into Another (within a Sprite)](https://css-tricks.com/fade-image-within-sprite/)）。
 - [x] iOS 在控制中心暂停后图标不变；
+- [x] Chrome 不能快退，速度范围 0 - 4，背景无滤镜；
+- [ ] Firefox 的 slide bar 拖动后不恢复播放状态；
 - [ ] iOS 9.2.1 下的 `<input>` 出现异常白色线条；
 - [ ] iOS 在控制中心名称；
 - [ ] Android 下的 :hover, :active 等伪类未适配；
+- [ ] slide bar 滑动效果；
 - [ ] iOS 下的点击 slide bar 即修改 value。
-- [ ] slide bar 滑动效果
-- [x] Chrome 不能快退，速度范围 0 - 4，背景无滤镜
-
-### 测试 userAgent
-
-```
-OS X Chrome:
-Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36
-
-OS X Safari:
-Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/601.4.4 (KHTML, like Gecko) Version/9.0.3 Safari/601.4.4
-
-iOS 9.2 on iPhone 4s
-Mozilla/5.0 (iPhone; CPU iPhone OS 9_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13C75 Safari/601.1
-
-iOS 9.2 on iPhone 6s Plus
-Mozilla/5.0 (iPhone; CPU iPhone OS 9_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13C75 Safari/601.1
-
-iOS 9.2 on iPad Pro
-Mozilla/5.0 (iPad; CPU OS 9_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13C75 Safari/601.1
-```

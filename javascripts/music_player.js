@@ -6,6 +6,7 @@ var MusicController = {
 		o.musicStatus = null;
 		o.playRateValues = null;
 		o._preRateFlag = null;
+		o.audioSource = document.querySelector(".audio-source");
 
 		// methods
 		o.initialize = function () {
@@ -16,8 +17,9 @@ var MusicController = {
 		};
 
 		o.deviceDetection = function () { 
-			o.interfaceControl();
-			o.playRateControl();
+			this.interfaceControl();
+			this.playRateControl();
+			this.autoLoadControl();
 		};
 
 		o.interfaceControl = function () {
@@ -49,9 +51,15 @@ var MusicController = {
 			}
 		};
 
-		o.setNodeReferences = function () {
-			this.audioSource = document.querySelector(".audio-source");
+		o.autoLoadControl = function () {
+			if ((is.desktop() && this.audioSource.preload != "auto") ||
+				(this.audioSource.networkState != 2)) { // NETWORK_LOADING
+				this.loadMusic();
+			}
+			// (HTML 5 Audio/Video DOM networkState 属性)[http://www.w3school.com.cn/tags/av_prop_networkstate.asp]
+		};
 
+		o.setNodeReferences = function () {
 			// slide-bar: 
 			this.progressIndicator = document.querySelector(".progress-indicator");
 			this.sliderRunnableTrack = document.querySelector(".slider-runnable-track");
@@ -148,7 +156,6 @@ var MusicController = {
 
 		// audioSource
 		o.audioCanPlayTrough = function () {
-			console.log("audioCanPlayTrough");
 			o.progressIndicator.max = parseInt(o.audioSource.duration, 10);
 			o.totalTime.innerText = o.formatPlayTime(o.audioSource.duration);
 			o.removeButtonsDisabled();
