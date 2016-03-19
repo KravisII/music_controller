@@ -240,6 +240,62 @@ var MusicController = {
 	}
 };
 
+var TipController = {
+	createNew: function () {
+		var o = {};
+		// properties
+		o.name = "TipController";
+		// (How to disable scrolling temporarily?)[http://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily?answertab=active#tab-top]
+		o.keys = {37: 1, 38: 1, 39: 1, 40: 1};
+		// left: 37, up: 38, right: 39, down: 40,
+		// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+		
+		
+		// methods
+		o.initialize = function () {
+			this.deviceDetection();
+			this.setNodeReferences();
+		};
+
+		o.preventDefault = function (e) {
+			e = e || window.event;
+			if (e.preventDefault) {
+				e.preventDefault();
+			}
+			e.returnValue = false;  
+		};
+
+		o.preventDefaultForScrollKeys = function (e) {
+		    if (keys[e.keyCode]) {
+		        preventDefault(e);
+		        return false;
+		    }
+		};
+
+		o.disableScroll = function () {
+			if (window.addEventListener) {// older FF
+				window.addEventListener('DOMMouseScroll', preventDefault, false);
+			}
+			window.onwheel = preventDefault; // modern standard
+			window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+			window.ontouchmove  = preventDefault; // mobile
+			document.onkeydown  = preventDefaultForScrollKeys;
+		}
+
+		o.enableScroll = function () {
+		    if (window.removeEventListener) {
+		        window.removeEventListener('DOMMouseScroll', preventDefault, false);
+		    }
+		    window.onmousewheel = document.onmousewheel = null; 
+		    window.onwheel = null; 
+		    window.ontouchmove = null;  
+		    document.onkeydown = null;  
+		}
+
+		return o;
+	}
+};
+
 var ObjClass = {
 	hasClass: function (obj, cls) {
 		return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));

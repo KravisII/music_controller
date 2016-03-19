@@ -26,9 +26,14 @@
       - [x] Safari 9.0 + 检测，若不是，则使 `music-player-controller` 的不透明度增强；
       - [x] 修复 preload 的相关问题；
       - [x] 优化滑动 slide bar 时的网络请求；
-      - [ ] 加入滑动时时间颜色的动画；
-      - [ ] 只在需要的地方显示 `div.tip`，并优化其显示效果，JavaScript 与 HTML 分离。
+      - [x] 加入滑动时时间颜色的动画；
+      
 
+- [ ] #### Mar 21, 2016 Version 1.4
+      
+      只在需要的地方显示 `div.tip`，并优化其显示效果，JavaScript 与 HTML 分离。
+
+      - [ ] 完善 `disableScroll`；
 
 ### 待优化
 - [x] 在 iOS 的 Safari 中 `:hover` 伪类的不合理使用；
