@@ -52,8 +52,7 @@ var MusicController = {
 		};
 
 		o.autoLoadControl = function () {
-			if ((is.desktop() && this.audioSource.preload != "auto") ||
-				(this.audioSource.networkState != 2)) { // NETWORK_LOADING
+			if (is.desktop() && ((this.audioSource.preload != "auto") || this.audioSource.networkState != 2)) { // NETWORK_LOADING
 				this.loadMusic();
 			}
 			// (HTML 5 Audio/Video DOM networkState 属性)[http://www.w3school.com.cn/tags/av_prop_networkstate.asp]
@@ -76,7 +75,7 @@ var MusicController = {
 
 		o.dataInitialize = function () {
 			this.progressIndicator.value = 0;
-			this.currentTime.innerText = this.formatPlayTime(this.audioSource.currentTime);
+			// this.currentTime.innerText = this.formatPlayTime(this.audioSource.currentTime);
 		};
 
 		o.addEventListeners = function () {
@@ -163,6 +162,7 @@ var MusicController = {
 		// audioSource
 		o.audioCanPlayTrough = function () {
 			o.progressIndicator.max = parseInt(o.audioSource.duration, 10);
+			o.currentTime.innerText = o.formatPlayTime(o.audioSource.currentTime);
 			o.totalTime.innerText = o.formatPlayTime(o.audioSource.duration);
 			o.removeButtonsDisabled();
 		};
