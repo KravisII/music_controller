@@ -41,10 +41,10 @@ html {
 .slide-bar {
     height: 25px;
 	width: 100%;
-    transition: color .2s ease-in-out;
+    transition: color .2s cubic-bezier(0.4, 0, 1, 1) .1s;
 }
 
-.slide-bar.high-light {
+.slide-bar.seeking {
     color: rgba(255, 255, 255, .64);
 }
 

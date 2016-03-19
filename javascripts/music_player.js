@@ -62,6 +62,7 @@ var MusicController = {
 			// slide-bar: 
 			this.progressIndicator = document.querySelector(".progress-indicator");
 			this.sliderRunnableTrack = document.querySelector(".slider-runnable-track");
+			this.slideBar = document.querySelector(".slide-bar");
 			this.currentTime = document.querySelector(".current-time");
 			this.totalTime = document.querySelector(".total-time");
 			
@@ -86,6 +87,8 @@ var MusicController = {
 			// slide-bar: 
 			this.progressIndicator.addEventListener("input", this.valueChanging);
 			this.progressIndicator.addEventListener("change", this.valueChanged);
+			this.progressIndicator.addEventListener("mousedown", this.slideBarMouseDown);
+			this.progressIndicator.addEventListener("touchstart", this.slideBarMouseDown);
 
 			// control-panel: 
 			this.forwardButton.addEventListener("click", this.forwardButtonClick);
@@ -121,6 +124,17 @@ var MusicController = {
 			}
 			o.musicStatus = null;
 			o.audioSource.currentTime = o.progressIndicator.value;
+		};
+
+		o.slideBarMouseDown = function () {
+			ObjClass.addClass(o.slideBar, "seeking");
+			document.addEventListener("mouseup", o.slideBarMouseUp);
+			document.addEventListener("touchend", o.slideBarMouseUp);
+		};
+
+		o.slideBarMouseUp = function () {
+			ObjClass.removeClass(o.slideBar, "seeking");
+			document.removeEventListener("touchend", o.slideBarMouseUp);
 		};
 
 		// control-panel: 
