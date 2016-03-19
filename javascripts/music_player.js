@@ -86,8 +86,7 @@ var MusicController = {
 
 			// slide-bar: 
 			this.progressIndicator.addEventListener("input", this.valueChanging);
-			this.progressIndicator.addEventListener("mouseup", this.valueChanged);
-			this.progressIndicator.addEventListener("touchend", this.valueChanged);
+			this.progressIndicator.addEventListener("change", this.valueChanged);
 
 			// control-panel: 
 			this.forwardButton.addEventListener("click", this.forwardButtonClick);
@@ -108,7 +107,13 @@ var MusicController = {
 				o.musicStatus = o.audioSource.paused;
 			}
 			o.pauseMusic();
-			o.audioSource.currentTime = o.progressIndicator.value;
+			o.setSlideBar(o.progressIndicator.value);
+		};
+
+		o.setSlideBar = function (_time) {
+			this.currentTime.innerText = this.formatPlayTime(_time);
+			var _percent = (_time / this.audioSource.duration) * 100;
+			this.sliderRunnableTrack.style.background = "linear-gradient(90deg, rgba(255, 255, 255, .62) 0%, rgba(255, 255, 255, .62) "+ _percent + "%, rgba(0, 0, 0, .62) "+ _percent + "%, rgba(0, 0, 0, .62) 100%)";
 		};
 
 		o.valueChanged = function () {
@@ -116,6 +121,7 @@ var MusicController = {
 				o.playMusic();
 			}
 			o.musicStatus = null;
+			o.audioSource.currentTime = o.progressIndicator.value;
 		};
 
 		// control-panel: 
@@ -197,10 +203,8 @@ var MusicController = {
 		};
 
 		o.onTimeUpdate = function () {
-			o.currentTime.innerText = o.formatPlayTime(o.audioSource.currentTime);
 			o.progressIndicator.value = parseInt(o.audioSource.currentTime, 10);
-			var _percent = (o.audioSource.currentTime / o.audioSource.duration) * 100;
-			o.sliderRunnableTrack.style.background = "linear-gradient(90deg, rgba(255, 255, 255, .62) 0%, rgba(255, 255, 255, .62) "+ _percent + "%, rgba(0, 0, 0, .62) "+ _percent + "%, rgba(0, 0, 0, .62) 100%)";
+			o.setSlideBar(o.progressIndicator.value);
 		};
 
 		o.formatPlayTime = function (time) {
