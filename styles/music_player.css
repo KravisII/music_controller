@@ -2,31 +2,43 @@ html {
 	/*Copy from [Hux 黄玄's Github](https://github.com/Huxpro/huxpro.github.io)*/
 	font-family: -apple-system, -apple-system-font, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
 }
-
-html, body {
-    width: 100%;
-    height: 100%;
+body {
+    background: #333;
 }
 
 .tip-overlay {
     position: fixed;
     height: 100%;
+    width: 100%;
+    display: none;
     overflow-y: scroll;
     overflow-x: hidden;
-    display: none;
-
     top: 0;
     left: 0;
-    z-index: 100000;
-    width: 100%;
-    background-color: rgba(0, 0, 0, .85);
+    z-index: 100;
+    background-color: rgba(0, 0, 0, .7);
     -webkit-backdrop-filter: blur(5px);
 }
 
 .tip-container {
-    color: white;
+    color: #ffffff;
     width: 100%;
     height: auto;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 0em 1em;
+    transform: translateY(50%);
+}
+
+.tip-container a {
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid #39A8FA;
+    color: #39A8FA;
+}
+
+.tip-container a + a {
+    margin-left: 2em;
 }
 
 .wrapper {
@@ -37,18 +49,19 @@ html, body {
     max-width: 414px;
     height: 414px;
     transform: translate(-50%, -50%);
-    background: url('http://7xqeox.com1.z0.glb.clouddn.com/%E5%AE%89%E5%92%8C%E6%A1%A5%E5%8C%97.jpg') no-repeat 50% 50%;
+    /*background: url('http://7xqeox.com1.z0.glb.clouddn.com/%E5%AE%89%E5%92%8C%E6%A1%A5%E5%8C%97.jpg') no-repeat 50% 50%;*/
+    background: url('http://7xqeox.com1.z0.glb.clouddn.com/The%20Last%20Survivor.jpg') no-repeat 50% 50%;
     background-size: contain;
 }
 
 .music-player-controller {
     position: absolute;
-    top: 50%;
+    top: 10%;
     left: 50%;
     box-sizing: border-box;
     width: 100%;
     padding: 8px 12px;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0%);
     /*border-radius: 6px;*/
     background: rgba(255, 255, 255, .42);
     -webkit-backdrop-filter: blur(15px);

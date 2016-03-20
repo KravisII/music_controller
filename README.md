@@ -19,21 +19,24 @@
       - [x] 进度条拖动；
       - [x] 时间显示。
 
-- [ ] #### Mar 19, 2016 Version 1.3
+- [x] #### Mar 19, 2016 Version 1.3
 
       完成尽量多的平台的各个浏览器（尤其是 iOS, OS X 下的浏览器）的适配、各项优化。
 
       - [x] Safari 9.0 + 检测，若不是，则使 `music-player-controller` 的不透明度增强；
       - [x] 修复 preload 的相关问题；
       - [x] 优化滑动 slide bar 时的网络请求；
-      - [x] 加入滑动时时间颜色的动画；
+      - [x] 加入滑动时时间颜色的动画。
       
 
 - [ ] #### Mar 21, 2016 Version 1.4
       
       只在需要的地方显示 `div.tip`，并优化其显示效果，JavaScript 与 HTML 分离。
 
-      - [ ] 完善 `disableScroll`；
+      - [x] 完善 `disableScroll`；
+      - [x] 优化 tip 在 Mobile 端的显示；
+      - [ ] 加入 audio 的载入动画；
+      - [ ] Andriod 下 audio 载入异常。
 
 ### 待优化
 - [x] 在 iOS 的 Safari 中 `:hover` 伪类的不合理使用；
@@ -46,10 +49,12 @@
 - [x] slide bar 滑动效果；
 - [x] iOS 9.2.1 下的 `<input>` 出现异常白色线条；
       在 `<head>` 下加入 `<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">` 后暂时结局，具体原因未知。
-- [x] iOS 在控制中心名称；
+- [x] iOS 在控制中心名称。
       [Audio and Video HTML](https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/AudioandVideoTagBasics/AudioandVideoTagBasics.html)，在 `<audio>` 下加入属性 `title`。
-- [ ] Android 下的 `:hover`, `:active` 等伪类未适配。
+
 
 ### 放弃
-- [ ] iOS 下的点击 slide bar 即修改 value。
+- [ ] iOS 下的点击 slide bar 即修改 value；
       放弃原因：不符合标准操作。
+- [ ] Android 下的 `:hover`, `:active` 等伪类未适配。
+      放弃原因：无 Andriod 设备可供测试。

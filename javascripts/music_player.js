@@ -251,6 +251,7 @@ var TipController = {
 		// methods
 		o.initialize = function () {
 			this.setNodeReferences();
+			this.setNodeEvents();
 			this.deviceDetection();
 			
 		};
@@ -259,15 +260,28 @@ var TipController = {
 			this.tipOverlay = document.querySelector(".tip-overlay");
 			this.wrapper = document.querySelector(".wrapper");
 			this.body = document.querySelector("body");
+
+			this.cancelLink = document.querySelector(".tip-overlay a.cancel");
+			this.continueLink = document.querySelector(".tip-overlay a.continue");
+		};
+
+		o.setNodeEvents = function () {
+			this.cancelLink.onclick = function () {
+				open(location, '_self').close();
+				return false;
+			};
+
+			this.continueLink.onclick = function () {
+				o.closeTip();
+				return false;
+			};
 		};
 
 		o.deviceDetection = function () {
 			if (is.desktop()) {
-				console.log("This is desktop");
-				// this.showTip();
-				// setTimeout(this.closeTip, 1000);
+				// Desktop Events
 			} else {
-				console.log("This is mobile");
+				// Mobile Events
 				this.showTip();
 			}
 		};
@@ -280,7 +294,6 @@ var TipController = {
 		o.closeTip = function () {
 			o.tipOverlay.removeAttribute("style");
 			o.enableScroll();
-			console.log("mc.autoLoadControl");
 			mc.loadMusic();
 		};
 
@@ -302,22 +315,9 @@ var TipController = {
 };
 
 var ObjClass = {
-	hasClass: function (obj, cls) {
-		return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
-	},
-
-	addClass: function (obj, cls) {
-		if (!this.hasClass(obj, cls)) {
-			obj.className += " " + cls;
-		}
-	},
-
-	removeClass: function (obj, cls) {
-		if (this.hasClass(obj, cls)) {
-			var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
-			obj.className = obj.className.replace(reg, ' ');
-		}
-	}
+	hasClass: function (obj, cls) {return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));},
+	addClass: function (obj, cls) {if (!this.hasClass(obj, cls)) {obj.className += " " + cls;}},
+	removeClass: function (obj, cls) {if (this.hasClass(obj, cls)) {var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)'); obj.className = obj.className.replace(reg, ' ');}}
 };
 
 var mc = MusicController.createNew();
