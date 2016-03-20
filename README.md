@@ -35,7 +35,7 @@
 
       - [x] 完善 `disableScroll`；
       - [x] 优化 tip 在 Mobile 端的显示；
-      - [ ] 加入 audio 的载入动画；
+      - [x] 加入 audio 的载入动画；
       - [ ] Andriod 下 audio 载入异常。
 
 ### 待优化

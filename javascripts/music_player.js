@@ -61,6 +61,11 @@ var MusicController = {
 		};
 
 		o.setNodeReferences = function () {
+			// music-player-controller
+			this.inner = document.querySelector(".music-player-controller-inner");
+			this.loading = document.querySelector(".music-player-controller-loading");
+			this.setSpin();
+			
 			// slide-bar: 
 			this.progressIndicator = document.querySelector(".progress-indicator");
 			this.sliderRunnableTrack = document.querySelector(".slider-runnable-track");
@@ -76,9 +81,13 @@ var MusicController = {
 			this.backwardButton = document.querySelector(".backward-button");
 		};
 
+		o.setSpin = function () {
+			var setting = {lines: 9, length: 0, width: 6, radius: 12, scale: 1, corners: 1, color: '#000', opacity: 0.35, rotate: 2, direction: 1, speed: 1, trail: 72, fps: 20, zIndex: 2e9, className: 'spinner', top: '50%', left: '50%', shadow: false, hwaccel: false, position: 'absolute'};
+			var spinner = new Spinner(setting).spin(o.loading);
+		};
+
 		o.dataInitialize = function () {
 			this.progressIndicator.value = 0;
-			// this.currentTime.innerText = this.formatPlayTime(this.audioSource.currentTime);
 		};
 
 		o.addEventListeners = function () {
@@ -89,8 +98,6 @@ var MusicController = {
 			// slide-bar: 
 			this.progressIndicator.addEventListener("input", this.valueChanging);
 			this.progressIndicator.addEventListener("change", this.valueChanged);
-			this.progressIndicator.addEventListener("mousedown", this.slideBarMouseDown);
-			this.progressIndicator.addEventListener("touchstart", this.slideBarMouseDown);
 
 			// control-panel: 
 			this.forwardButton.addEventListener("click", this.forwardButtonClick);
@@ -109,8 +116,10 @@ var MusicController = {
 		o.valueChanging = function () {
 			if (o.musicStatus == null) {
 				o.musicStatus = o.audioSource.paused;
+				o.pauseMusic();
+				ObjClass.addClass(o.slideBar, "seeking");
 			}
-			o.pauseMusic();
+			
 			o.setSlideBar(o.progressIndicator.value);
 		};
 
@@ -126,17 +135,7 @@ var MusicController = {
 			}
 			o.musicStatus = null;
 			o.audioSource.currentTime = o.progressIndicator.value;
-		};
-
-		o.slideBarMouseDown = function () {
-			ObjClass.addClass(o.slideBar, "seeking");
-			document.addEventListener("mouseup", o.slideBarMouseUp);
-			document.addEventListener("touchend", o.slideBarMouseUp);
-		};
-
-		o.slideBarMouseUp = function () {
 			ObjClass.removeClass(o.slideBar, "seeking");
-			document.removeEventListener("touchend", o.slideBarMouseUp);
 		};
 
 		// control-panel: 
@@ -181,6 +180,8 @@ var MusicController = {
 			o.currentTime.innerText = o.formatPlayTime(o.audioSource.currentTime);
 			o.totalTime.innerText = o.formatPlayTime(o.audioSource.duration);
 			o.removeButtonsDisabled();
+			o.inner.style.display = "block";
+			o.loading.style.display = "none";
 		};
 
 		o.removeButtonsDisabled = function () {
