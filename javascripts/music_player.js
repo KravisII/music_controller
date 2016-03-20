@@ -20,6 +20,8 @@ var MusicController = {
 			this.interfaceControl();
 			this.playRateControl();
 			this.autoLoadControl();
+
+			this.tc = TipController.createNew();
 		};
 
 		o.interfaceControl = function () {
@@ -52,7 +54,7 @@ var MusicController = {
 		};
 
 		o.autoLoadControl = function () {
-			if (is.desktop() && ((this.audioSource.preload != "auto") || this.audioSource.networkState != 2)) { // NETWORK_LOADING
+			if (is.desktop() && ((o.audioSource.preload != "auto") || o.audioSource.networkState != 2)) { // NETWORK_LOADING
 				this.loadMusic();
 			}
 			// (HTML 5 Audio/Video DOM networkState 属性)[http://www.w3school.com.cn/tags/av_prop_networkstate.asp]
@@ -245,53 +247,50 @@ var TipController = {
 		var o = {};
 		// properties
 		o.name = "TipController";
-		// (How to disable scrolling temporarily?)[http://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily?answertab=active#tab-top]
-		o.keys = {37: 1, 38: 1, 39: 1, 40: 1};
-		// left: 37, up: 38, right: 39, down: 40,
-		// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-		
 		
 		// methods
 		o.initialize = function () {
-			this.deviceDetection();
 			this.setNodeReferences();
+			this.deviceDetection();
+			
 		};
 
-		o.preventDefault = function (e) {
-			e = e || window.event;
-			if (e.preventDefault) {
-				e.preventDefault();
+		o.setNodeReferences = function () {
+			this.tipOverlay = document.querySelector(".tip-overlay");
+			this.wrapper = document.querySelector(".wrapper");
+			this.body = document.querySelector("body");
+		};
+
+		o.deviceDetection = function () {
+			if (is.desktop()) {
+				console.log("This is desktop");
+				// this.showTip();
+				// setTimeout(this.closeTip, 1000);
+			} else {
+				console.log("This is mobile");
+				this.showTip();
 			}
-			e.returnValue = false;  
 		};
 
-		o.preventDefaultForScrollKeys = function (e) {
-		    if (keys[e.keyCode]) {
-		        preventDefault(e);
-		        return false;
-		    }
+		o.showTip = function () {
+			this.disableScroll();
+			this.tipOverlay.style.display = "block";
+		};
+
+		o.closeTip = function () {
+			o.tipOverlay.removeAttribute("style");
+			mc.autoLoadControl();
 		};
 
 		o.disableScroll = function () {
-			if (window.addEventListener) {// older FF
-				window.addEventListener('DOMMouseScroll', preventDefault, false);
-			}
-			window.onwheel = preventDefault; // modern standard
-			window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
-			window.ontouchmove  = preventDefault; // mobile
-			document.onkeydown  = preventDefaultForScrollKeys;
-		}
+			this.body.style.overflow = "hidden";
+		};
 
 		o.enableScroll = function () {
-		    if (window.removeEventListener) {
-		        window.removeEventListener('DOMMouseScroll', preventDefault, false);
-		    }
-		    window.onmousewheel = document.onmousewheel = null; 
-		    window.onwheel = null; 
-		    window.ontouchmove = null;  
-		    document.onkeydown = null;  
-		}
+			this.body.removeAttribute("style");
+		};
 
+		o.initialize();
 		return o;
 	}
 };

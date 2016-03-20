@@ -11,8 +11,9 @@ html, body {
 .tip-overlay {
     position: fixed;
     height: 100%;
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
+    display: none;
 
     top: 0;
     left: 0;
