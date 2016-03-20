@@ -279,14 +279,20 @@ var TipController = {
 
 		o.closeTip = function () {
 			o.tipOverlay.removeAttribute("style");
-			mc.autoLoadControl();
+			o.enableScroll();
+			console.log("mc.autoLoadControl");
+			mc.loadMusic();
 		};
 
 		o.disableScroll = function () {
 			this.body.style.overflow = "hidden";
+			document.ontouchmove = function(event){
+			    event.preventDefault();
+			};
 		};
 
 		o.enableScroll = function () {
+			document.ontouchmove = null;
 			this.body.removeAttribute("style");
 		};
 
