@@ -324,3 +324,15 @@ noscript.tip-overlay {
 .no-backdrop-filter.black {
     background-color: rgba(0, 0, 0, .82);
 }
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.visible {
+    visibility: visible;
+}

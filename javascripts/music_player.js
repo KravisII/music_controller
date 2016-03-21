@@ -193,8 +193,8 @@ var MusicController = {
 			o.currentTime.innerText = o.formatPlayTime(o.audioSource.currentTime);
 			o.totalTime.innerText = o.formatPlayTime(o.audioSource.duration);
 			o.removeButtonsDisabled();
-			o.inner.style.display = "block";
-			o.loading.style.display = "none";
+			ObjClass.addClass(o.inner, "show");
+			ObjClass.addClass(o.loading, "hide")
 		};
 
 		o.removeButtonsDisabled = function () {
@@ -226,11 +226,11 @@ var MusicController = {
 				_showSpeed = o.backwardSpeed;
 				_hideSpeed = o.forwardSpeed;
 			}
-			_showSpeed.style.visibility = "visible";
-			_hideSpeed.removeAttribute("style");
+			ObjClass.addClass(_showSpeed, "visible");
+			ObjClass.removeClass(_hideSpeed, "visible");
 			_showSpeed.innerText = Math.abs(o.audioSource.playbackRate);
 			if (o.audioSource.playbackRate == 1) {
-				_showSpeed.removeAttribute("style");
+				ObjClass.removeClass(_showSpeed, "visible");
 			}
 		};
 
@@ -311,27 +311,28 @@ var TipController = {
 
 		o.showTip = function () {
 			this.disableScroll();
-			this.tipOverlay.style.display = "block";
+			ObjClass.addClass(this.tipOverlay, "show");
 		};
 
 		o.closeTip = function () {
-			o.tipOverlay.removeAttribute("style");
+			ObjClass.removeClass(this.tipOverlay, "show");
 			o.enableScroll();
 			mc.loadMusic();
 		};
 
 		o.disableScroll = function () {
-			this.body.style.overflow = "hidden"; // For desktop
+			ObjClass.addClass(this.body, "disableScroll"); // For desktop
 			document.ontouchmove = function(event){ // For mobile
 			    event.preventDefault();
 			};
 		};
 
 		o.enableScroll = function () {
+			ObjClass.removeClass(this.body, "disableScroll");
 			document.ontouchmove = null;
-			this.body.removeAttribute("style");
 		};
 
+		// Execute functions and return object
 		o.initialize();
 		return o;
 	}
