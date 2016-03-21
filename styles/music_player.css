@@ -6,6 +6,10 @@ body {
     background: #333;
 }
 
+body.disableScroll {
+    overflow: hidden;
+}
+
 .tip-overlay {
     position: fixed;
     height: 100%;

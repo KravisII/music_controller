@@ -273,7 +273,7 @@ var TipController = {
 		};
 
 		o.setNodeReferences = function () {
-			this.tipOverlay = document.querySelector(".tip-overlay");
+			this.tipOverlay = document.querySelector("div.tip-overlay");
 			this.wrapper = document.querySelector(".wrapper");
 			this.body = document.querySelector("body");
 
@@ -321,8 +321,8 @@ var TipController = {
 		};
 
 		o.disableScroll = function () {
-			this.body.style.overflow = "hidden";
-			document.ontouchmove = function(event){
+			this.body.style.overflow = "hidden"; // For desktop
+			document.ontouchmove = function(event){ // For mobile
 			    event.preventDefault();
 			};
 		};
