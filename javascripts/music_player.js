@@ -40,17 +40,23 @@ var MusicController = {
 			var _numsSafari = [-8, -6, -4, -2, 1, 2, 4, 6, 8];
 			var _numsChrome = [1, 2, 4];
 
-			if (is.desktop()) {
-				if (is.safari()) {
-					o.playRateValues = _numsSafari;
-				} else if (is.chrome()) {
-					o.playRateValues = _numsChrome;
-				} else if (is.firefox()) {
-					o.playRateValues = _numsChrome;
-				}
-			} else {
+			if (is.safari()) {
 				o.playRateValues = _numsSafari;
+			} else {
+				o.playRateValues = _numsChrome;
 			}
+
+			// if (is.desktop()) {
+			// 	if (is.safari()) {
+			// 		o.playRateValues = _numsSafari;
+			// 	} else if (is.chrome()) {
+			// 		o.playRateValues = _numsChrome;
+			// 	} else if (is.firefox()) {
+			// 		o.playRateValues = _numsChrome;
+			// 	}
+			// } else {
+			// 	o.playRateValues = _numsSafari;
+			// }
 		};
 
 		o.autoLoadControl = function () {
@@ -187,10 +193,12 @@ var MusicController = {
 		o.removeButtonsDisabled = function () {
 			o.playPauseButton.removeAttribute("disabled");
 			o.backwardButton.removeAttribute("disabled");
-			o.forwardButton.removeAttribute("disabled");
-			if (is.chrome() || is.firefox()) {
-				o.forwardButton.setAttribute("disabled", "disabled");
+			if (is.safari()) {
+				o.forwardButton.removeAttribute("disabled");
 			}
+			// if (is.chrome() || is.firefox()) {
+			// 	o.forwardButton.setAttribute("disabled", "disabled");
+			// }
 		};
 
 		o.audioIsPlaying = function () {
@@ -322,3 +330,6 @@ var ObjClass = {
 };
 
 var mc = MusicController.createNew();
+
+var ua = document.querySelector(".user-agent");
+ua.innerText = navigator.userAgent;

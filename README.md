@@ -29,14 +29,13 @@
       - [x] 加入滑动时时间颜色的动画。
       
 
-- [ ] #### Mar 21, 2016 Version 1.4
+- [x] #### Mar 21, 2016 Version 1.4
       
       只在需要的地方显示 `div.tip`，并优化其显示效果，JavaScript 与 HTML 分离。
 
       - [x] 完善 `disableScroll`；
       - [x] 优化 tip 在 Mobile 端的显示；
       - [x] 加入 audio 的载入动画；
-      - [ ] Andriod 下 audio 载入异常。
 
 ### 待优化
 - [x] 在 iOS 的 Safari 中 `:hover` 伪类的不合理使用；
@@ -53,8 +52,12 @@
       [Audio and Video HTML](https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/AudioandVideoTagBasics/AudioandVideoTagBasics.html)，在 `<audio>` 下加入属性 `title`。
 
 
-### 放弃
+### 暂时放弃
+- [ ] Android 下的 `:hover`, `:active` 等伪类未适配；
+      放弃原因：无 Andriod 设备可供测试。
+- [ ] Andriod 下 audio 载入异常，`preload = none` 不起作用。
+      放弃原因：无 Andriod 设备可供测试。
+
+### 永久放弃
 - [ ] iOS 下的点击 slide bar 即修改 value；
       放弃原因：不符合标准操作。
-- [ ] Android 下的 `:hover`, `:active` 等伪类未适配。
-      放弃原因：无 Andriod 设备可供测试。

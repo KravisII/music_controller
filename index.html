@@ -8,6 +8,12 @@
 	<link rel="stylesheet" href="./styles/music_player.css">
 </head>
 <body>
+	<noscript class="tip-overlay">
+		<div class="tip-container">
+			<h2>JavaScript 已被禁用</h2>
+			<p>如需获得完整体验，请启用浏览器中的 Javascript。</br>谢谢！</p>
+		</div>
+	</noscript>
 	<div class="tip-overlay">
 		<div class="tip-container">
 			<h2>注意</h2>
@@ -38,10 +44,15 @@
 					</span>
 					<span class="backward-speed">8</span>
 				</div>
+
 			</div>
 			<div class="music-player-controller-loading"></div>
 		</div>
+		<div style="box-sizing: border-box; position: relative; width: 100%; top:50%; color: #000; background-color: #ccc; padding: 2px 12px; background: rgba(255, 255, 255, .42); -webkit-backdrop-filter: blur(15px);">
+			<p class="user-agent"></p>
+		</div>
 	</div>
+
 </body>
 <script src="./javascripts/is.min.js"></script>
 <script src="./javascripts/spin.min.js"></script>
