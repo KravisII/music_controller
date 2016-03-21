@@ -26,14 +26,21 @@ var MusicController = {
 
 		o.interfaceControl = function () {
 			var musicPlayerController = document.querySelector(".music-player-controller");
+			var userAgentContainer = document.querySelector(".user-agent-container");
 
 			if (is.ios()) {
                 ObjClass.removeClass(musicPlayerController, "no-touch");
             }
 
-            if (is.not.safari() && is.desktop()) {
-            	ObjClass.addClass(musicPlayerController, "no-safari");
-            }
+            if (Modernizr.backdropfilter) {
+			  	// supported
+			} else {
+				ObjClass.addClass(musicPlayerController, "no-backdrop-filter white");
+				ObjClass.addClass(userAgentContainer, "no-backdrop-filter white");
+			}
+            // if (is.not.safari() && is.desktop()) {
+            	
+            // }
 		};
 
 		o.playRateControl = function () {
@@ -293,6 +300,13 @@ var TipController = {
 				// Mobile Events
 				this.showTip();
 			}
+
+			if (Modernizr.backdropfilter) {
+			  	// supported
+			} else {
+				ObjClass.addClass(this.tipOverlay, "no-backdrop-filter black");
+			}
+
 		};
 
 		o.showTip = function () {

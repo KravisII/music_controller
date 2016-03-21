@@ -16,7 +16,8 @@ body {
     top: 0;
     left: 0;
     z-index: 100;
-    background-color: rgba(0, 0, 0, .6);
+    background-color: rgba(0, 0, 0, .42);
+    /* https://webkit.org/status/#feature-filter-effects-backdrop-filter-propery */
     -webkit-backdrop-filter: blur(30px);
 }
 
@@ -51,6 +52,7 @@ noscript.tip-overlay {
     left: 50%;
     width: 100%;
     max-width: 414px;
+    min-width: 320px;
     height: 414px;
     transform: translate(-50%, -50%);
     /*background: url('http://7xqeox.com1.z0.glb.clouddn.com/%E5%AE%89%E5%92%8C%E6%A1%A5%E5%8C%97.jpg') no-repeat 50% 50%;*/
@@ -69,10 +71,6 @@ noscript.tip-overlay {
     /*border-radius: 6px;*/
     background: rgba(255, 255, 255, .42);
     -webkit-backdrop-filter: blur(15px);
-}
-
-.music-player-controller.no-safari {
-    background: rgba(255, 255, 255, .62);
 }
 
 .music-player-controller-inner {
@@ -302,3 +300,23 @@ noscript.tip-overlay {
  .backward-button:disabled:active,
  .backward-button:disabled:hover
 {background-position: -52px -78px;}
+
+.user-agent-container {
+    width: 100%;
+    padding: 2px 12px;
+    box-sizing: border-box;
+    position: relative;
+    top: 50%;
+    left: 0;
+    height: auto;
+    background: rgba(255, 255, 255, 0.42);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.no-backdrop-filter.white {
+    background-color: rgba(255, 255, 255, .82);
+}
+
+.no-backdrop-filter.black {
+    background-color: rgba(0, 0, 0, .82);
+}
