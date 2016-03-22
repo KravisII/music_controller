@@ -275,7 +275,7 @@ var TipController = {
 		};
 
 		o.deviceDetection = function () {
-			if (!is.desktop()) {
+			if (is.desktop()) {
 				// Desktop Events
 			} else {
 				// Mobile Events

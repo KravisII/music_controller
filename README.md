@@ -1,6 +1,11 @@
-# music_player-1.1
-[This is demo](http://www.kravis.me/demo5)
-![music_player_1.1](README-files/music_player_1.1.png)
+# music_player-1.4
+[This is demo](http://www.kravis.me/music_player)
+
+#### Music Player 1.4 on Mac
+![music_player_1.4_mac_safari](README-files/music_player_1.4_mac_safari.png)
+
+#### Music Player 1.4 on iOS
+![music_player_1.4_ios_safari](README-files/music_player_1.4_ios_safari.png)
 
 ### Version 1 基本的音乐播放器界面
 - [x] #### Mar 15, 2016 Version 1.1
