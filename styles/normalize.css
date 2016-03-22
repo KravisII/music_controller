@@ -1,11 +1,15 @@
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 html {
-   font-family: sans-serif; /* 1 */
+  font-family: sans-serif; /* 1 */
   font-size: 100%;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: 'liga', 'kern';
 }
 
 body {

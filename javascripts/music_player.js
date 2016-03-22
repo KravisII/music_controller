@@ -38,9 +38,6 @@ var MusicController = {
 				ObjClass.addClass(musicPlayerController, "no-backdrop-filter white");
 				ObjClass.addClass(userAgentContainer, "no-backdrop-filter white");
 			}
-            // if (is.not.safari() && is.desktop()) {
-            	
-            // }
 		};
 
 		o.playRateControl = function () {
@@ -52,18 +49,6 @@ var MusicController = {
 			} else {
 				o.playRateValues = _numsChrome;
 			}
-
-			// if (is.desktop()) {
-			// 	if (is.safari()) {
-			// 		o.playRateValues = _numsSafari;
-			// 	} else if (is.chrome()) {
-			// 		o.playRateValues = _numsChrome;
-			// 	} else if (is.firefox()) {
-			// 		o.playRateValues = _numsChrome;
-			// 	}
-			// } else {
-			// 	o.playRateValues = _numsSafari;
-			// }
 		};
 
 		o.autoLoadControl = function () {
@@ -200,12 +185,9 @@ var MusicController = {
 		o.removeButtonsDisabled = function () {
 			o.playPauseButton.removeAttribute("disabled");
 			o.backwardButton.removeAttribute("disabled");
-			if (is.safari()) {
+			if (is.safari() || is.ios()) {
 				o.forwardButton.removeAttribute("disabled");
 			}
-			// if (is.chrome() || is.firefox()) {
-			// 	o.forwardButton.setAttribute("disabled", "disabled");
-			// }
 		};
 
 		o.audioIsPlaying = function () {
@@ -269,7 +251,6 @@ var TipController = {
 			this.setNodeReferences();
 			this.setNodeEvents();
 			this.deviceDetection();
-			
 		};
 
 		o.setNodeReferences = function () {
@@ -294,7 +275,7 @@ var TipController = {
 		};
 
 		o.deviceDetection = function () {
-			if (is.desktop()) {
+			if (!is.desktop()) {
 				// Desktop Events
 			} else {
 				// Mobile Events

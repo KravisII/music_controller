@@ -36,14 +36,16 @@ noscript.tip-overlay {
     box-sizing: border-box;
     text-align: center;
     padding: 0em 1em;
-    transform: translateY(50%);
+    transform: translateY(-50%);
+    position: relative;
+    top: 30%;
 }
 
 .tip-container a {
     display: inline-block;
     text-decoration: none;
-    border-bottom: 1px solid #39A8FA;
-    color: #39A8FA;
+    border-bottom: 1px solid #08C;
+    color: #08C;
 }
 
 .tip-container a + a {
@@ -59,7 +61,6 @@ noscript.tip-overlay {
     min-width: 320px;
     height: 414px;
     transform: translate(-50%, -50%);
-    /*background: url('http://7xqeox.com1.z0.glb.clouddn.com/%E5%AE%89%E5%92%8C%E6%A1%A5%E5%8C%97.jpg') no-repeat 50% 50%;*/
     background: url('http://7xqeox.com1.z0.glb.clouddn.com/The%20Last%20Survivor.jpg') no-repeat 50% 50%;
     background-size: contain;
 }
@@ -72,7 +73,6 @@ noscript.tip-overlay {
     width: 100%;
     padding: 8px 12px;
     transform: translate(-50%, 0%);
-    /*border-radius: 6px;*/
     background: rgba(255, 255, 255, .42);
     -webkit-backdrop-filter: blur(15px);
 }
@@ -272,37 +272,41 @@ noscript.tip-overlay {
 {background-position: 0px -78px;}
 
 
-.music-player-controller:not(.no-touch) .forward-button:active, .no-touch .forward-button:hover 
+.music-player-controller:not(.no-touch) .forward-button:active,
+.no-touch .forward-button:hover 
 {background-position: -26px 0px;}
 
-.music-player-controller:not(.no-touch) .play-pause-button[value="play"]:active, .no-touch .play-pause-button[value="play"]:hover 
+.music-player-controller:not(.no-touch) .play-pause-button[value="play"]:active, 
+.no-touch .play-pause-button[value="play"]:hover 
 {background-position: -26px -26px;}
 
-.music-player-controller:not(.no-touch) .play-pause-button[value="pause"]:active, .no-touch .play-pause-button[value="pause"]:hover 
+.music-player-controller:not(.no-touch) .play-pause-button[value="pause"]:active, 
+.no-touch .play-pause-button[value="pause"]:hover 
 {background-position: -26px -52px;}
 
-.music-player-controller:not(.no-touch) .backward-button:active, .no-touch .backward-button:hover 
+.music-player-controller:not(.no-touch) .backward-button:active, 
+.no-touch .backward-button:hover 
 {background-position: -26px -78px;}
 
 
 .forward-button:disabled,
- .forward-button:disabled:active,
- .forward-button:disabled:hover
+.forward-button:disabled:active,
+.forward-button:disabled:hover
 {background-position: -52px 0px;}
 
 .play-pause-button[value="play"]:disabled,
- .play-pause-button[value="play"]:disabled:active,
- .play-pause-button[value="play"]:disabled:hover
+.play-pause-button[value="play"]:disabled:active,
+.play-pause-button[value="play"]:disabled:hover 
 {background-position: -52px -26px;}
 
 .play-pause-button[value="pause"]:disabled,
- .play-pause-button[value="pause"]:disabled:active,
- .play-pause-button[value="pause"]:disabled:hover
+.play-pause-button[value="pause"]:disabled:active,
+.play-pause-button[value="pause"]:disabled:hover
 {background-position: -52px -52px;}
 
 .backward-button:disabled,
- .backward-button:disabled:active,
- .backward-button:disabled:hover
+.backward-button:disabled:active,
+.backward-button:disabled:hover
 {background-position: -52px -78px;}
 
 .user-agent-container {
@@ -322,7 +326,7 @@ noscript.tip-overlay {
 }
 
 .no-backdrop-filter.black {
-    background-color: rgba(0, 0, 0, .82);
+    background-color: rgba(0, 0, 0, .92);
 }
 
 .show {
