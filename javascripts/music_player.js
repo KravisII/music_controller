@@ -28,7 +28,7 @@ var MusicController = {
 			var musicPlayerController = document.querySelector(".music-player-controller");
 			var userAgentContainer = document.querySelector(".user-agent-container");
 
-			if (is.mobile()) {
+			if (is.touchDevice()) {
                 ObjClass.removeClass(musicPlayerController, "no-touch");
             }
 
@@ -42,12 +42,12 @@ var MusicController = {
 
 		o.playRateControl = function () {
 			var _numsSafari = [-8, -6, -4, -2, 1, 2, 4, 6, 8];
-			var _numsChrome = [1, 2, 4];
+			var _numsOther = [1, 2, 4];
 
 			if (is.safari()) {
 				o.playRateValues = _numsSafari;
 			} else {
-				o.playRateValues = _numsChrome;
+				o.playRateValues = _numsOther;
 			}
 		};
 
@@ -184,7 +184,9 @@ var MusicController = {
 
 		o.removeButtonsDisabled = function () {
 			o.playPauseButton.removeAttribute("disabled");
-			o.backwardButton.removeAttribute("disabled");
+			if (!(is.chrome() && is.android())) {
+				o.backwardButton.removeAttribute("disabled");
+			}
 			if (is.safari() || is.ios()) {
 				o.forwardButton.removeAttribute("disabled");
 			}
@@ -280,6 +282,9 @@ var TipController = {
 			} else {
 				// Mobile Events
 				this.showTip();
+				if (is.android() && is.not.chrome()) {
+					this.androidChromeTip();
+				}
 			}
 
 			if (Modernizr.backdropfilter) {
@@ -288,6 +293,19 @@ var TipController = {
 				ObjClass.addClass(this.tipOverlay, "no-backdrop-filter black");
 			}
 
+		};
+
+		o.androidChromeTip = function () {
+			var _tpcon = this.tipOverlay.querySelector(".tip-container");
+			var _p = _tpcon.querySelector("p:nth-child(2)");
+
+			var _newNode = document.createElement("h2");
+			_newNode.innerHTML = "请使用 Chrome 浏览器";
+    		_tpcon.insertBefore(_newNode, _p.nextSibling);
+
+			var _newNode2 = document.createElement("p");
+			_newNode2.innerHTML = "您当前正在使用 Android 系统，建议使用 Chrome 浏览器访问此页面以获得最佳体验。";
+    		_tpcon.insertBefore(_newNode2, _newNode.nextSibling);
 		};
 
 		o.showTip = function () {
