@@ -238,6 +238,10 @@ noscript.tip-overlay {
 	justify-content: space-between;
 }
 
+.control-panel .buttons.center {
+    justify-content: center;
+}
+
 .control-panel .buttons input {
 	-webkit-appearance: none;
 	padding: 0;

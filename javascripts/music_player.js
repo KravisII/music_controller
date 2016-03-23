@@ -190,6 +190,16 @@ var MusicController = {
 			if (is.safari() || is.ios()) {
 				o.forwardButton.removeAttribute("disabled");
 			}
+
+			if (o.backwardButton.hasAttribute("disabled") &&
+				o.forwardButton.hasAttribute("disabled")) {
+				ObjClass.addClass(o.backwardButton, "hide");
+				ObjClass.addClass(o.forwardButton, "hide");
+
+				var _bts = document.querySelector(".control-panel .buttons");
+				ObjClass.addClass(_bts, "center");
+			}
+
 		};
 
 		o.audioIsPlaying = function () {
