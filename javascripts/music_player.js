@@ -28,7 +28,7 @@ var MusicController = {
 			var musicPlayerController = document.querySelector(".music-player-controller");
 			var userAgentContainer = document.querySelector(".user-agent-container");
 
-			if (is.ios()) {
+			if (is.mobile()) {
                 ObjClass.removeClass(musicPlayerController, "no-touch");
             }
 

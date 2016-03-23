@@ -43,6 +43,7 @@
       - [x] 完善 `disableScroll`；
       - [x] 优化 tip 在 Mobile 端的显示；
       - [x] 加入 audio 的载入动画；
+      - [x] Android 下的 `:hover`, `:active` 等伪类未适配；
 
 ### 待优化
 - [x] 在 iOS 的 Safari 中 `:hover` 伪类的不合理使用；
@@ -60,8 +61,6 @@
 
 
 ### 暂时放弃
-- [ ] Android 下的 `:hover`, `:active` 等伪类未适配；
-      放弃原因：无 Andriod 设备可供测试。
 - [ ] Andriod 下 audio 载入异常，`preload = none` 不起作用。
       放弃原因：无 Andriod 设备可供测试。
 
