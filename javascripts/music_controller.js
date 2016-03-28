@@ -25,17 +25,17 @@ var MusicController = {
 		};
 
 		o.interfaceControl = function () {
-			var musicPlayerController = document.querySelector(".music-player-controller");
+			var musicController = document.querySelector(".music-controller");
 			var userAgentContainer = document.querySelector(".user-agent-container");
 
 			if (is.touchDevice()) {
-                ObjClass.removeClass(musicPlayerController, "no-touch");
+                ObjClass.removeClass(musicController, "no-touch");
             }
 
             if (Modernizr.backdropfilter) {
 			  	// supported
 			} else {
-				ObjClass.addClass(musicPlayerController, "no-backdrop-filter white");
+				ObjClass.addClass(musicController, "no-backdrop-filter white");
 				ObjClass.addClass(userAgentContainer, "no-backdrop-filter white");
 			}
 		};
@@ -59,9 +59,9 @@ var MusicController = {
 		};
 
 		o.setNodeReferences = function () {
-			// music-player-controller
-			this.inner = document.querySelector(".music-player-controller-inner");
-			this.loading = document.querySelector(".music-player-controller-loading");
+			// music-controller
+			this.inner = document.querySelector(".music-controller-inner");
+			this.loading = document.querySelector(".music-controller-loading");
 			this.setSpin();
 			
 			// slide-bar: 

@@ -65,7 +65,7 @@ noscript.tip-overlay {
     background-size: contain;
 }
 
-.music-player-controller {
+.music-controller {
     position: absolute;
     top: 10%;
     left: 50%;
@@ -77,11 +77,11 @@ noscript.tip-overlay {
     -webkit-backdrop-filter: blur(15px);
 }
 
-.music-player-controller-inner {
+.music-controller-inner {
     display: none;
 }
 
-.music-player-controller-loading {
+.music-controller-loading {
     width: 100%;
     height: 57px;
 }
@@ -278,19 +278,19 @@ noscript.tip-overlay {
 {background-position: 0px -78px;}
 
 
-.music-player-controller:not(.no-touch) .forward-button:active,
+.music-controller:not(.no-touch) .forward-button:active,
 .no-touch .forward-button:hover 
 {background-position: -26px 0px;}
 
-.music-player-controller:not(.no-touch) .play-pause-button[value="play"]:active, 
+.music-controller:not(.no-touch) .play-pause-button[value="play"]:active, 
 .no-touch .play-pause-button[value="play"]:hover 
 {background-position: -26px -26px;}
 
-.music-player-controller:not(.no-touch) .play-pause-button[value="pause"]:active, 
+.music-controller:not(.no-touch) .play-pause-button[value="pause"]:active, 
 .no-touch .play-pause-button[value="pause"]:hover 
 {background-position: -26px -52px;}
 
-.music-player-controller:not(.no-touch) .backward-button:active, 
+.music-controller:not(.no-touch) .backward-button:active, 
 .no-touch .backward-button:hover 
 {background-position: -26px -78px;}
 

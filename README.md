@@ -1,13 +1,11 @@
-# music_player-1.4
-[This is demo](http://www.kravis.me/music_player)
+# music_controller-1.4
+[This is demo](http://www.kravis.me/music_controller)
 
-#### Music Player 1.4 on Mac
-<!-- ![music_player_1.4_mac_safari](README-files/music_player_1.4_mac_safari.png) -->
-<img src="README-files/music_player_1.4_mac_safari.png" alt="music_player_1.4_mac_safari">
+#### Music Controller 1.4 on Mac
+<img src="README-files/music_controller_1.4_mac_safari.png" alt="music_controller_1.4_mac_safari">
 
-#### Music Player 1.4 on iOS
-<!-- ![music_player_1.4_ios_safari](README-files/music_player_1.4_ios_safari.png) -->
-<img src="README-files/music_player_1.4_ios_safari.png" alt="music_player_1.4_ios_safari" width="414" height="736">
+#### Music Controller 1.4 on iOS
+<img src="README-files/music_controller_1.4_ios_safari.png" alt="music_controller_1.4_ios_safari" width="414" height="736">
 
 ### Version 1 基本的音乐播放器界面
 - [x] #### Mar 15, 2016 Version 1.1
@@ -30,7 +28,7 @@
 
       完成尽量多的平台的各个浏览器（尤其是 iOS, OS X 下的浏览器）的适配、各项优化。
 
-      - [x] Safari 9.0 + 检测，若不是，则使 `music-player-controller` 的不透明度增强；
+      - [x] Safari 9.0 + 检测，若不是，则使 `music-controller` 的不透明度增强；
       - [x] 修复 preload 的相关问题；
       - [x] 优化滑动 slide bar 时的网络请求；
       - [x] 加入滑动时时间颜色的动画。
