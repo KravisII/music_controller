@@ -57,11 +57,8 @@
 - [x] iOS 在控制中心名称。
       [Audio and Video HTML](https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/AudioandVideoTagBasics/AudioandVideoTagBasics.html)，在 `<audio>` 下加入属性 `title`。
 
-
-### 暂时放弃
-- [ ] Andriod 下 audio 载入异常，`preload = none` 不起作用。
-      放弃原因：无 Andriod 设备可供测试。
-
 ### 永久放弃
 - [ ] iOS 下的点击 slide bar 即修改 value；
       放弃原因：不符合标准操作。
+- [ ] Andriod 下 audio 载入异常，`preload = none` 不起作用。
+      放弃原因：仅在部分非 Android Chrome 浏览器中出现问题。
