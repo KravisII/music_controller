@@ -53,7 +53,7 @@
 - [x] Firefox 的 slide bar 拖动后不恢复播放状态；
 - [x] slide bar 滑动效果；
 - [x] iOS 9.2.1 下的 `<input>` 出现异常白色线条；
-      在 `<head>` 下加入 `<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">` 后暂时结局，具体原因未知。
+      在 `<head>` 下加入 `<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">` 后暂时解决，具体原因未知。
 - [x] iOS 在控制中心名称。
       [Audio and Video HTML](https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/AudioandVideoTagBasics/AudioandVideoTagBasics.html)，在 `<audio>` 下加入属性 `title`。
 
