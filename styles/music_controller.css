@@ -1,6 +1,6 @@
 html {
-	/*Copy from [Hux 黄玄's Github](https://github.com/Huxpro/huxpro.github.io)*/
-	font-family: -apple-system, -apple-system-font, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+    /*Copy from [Hux 黄玄's Github](https://github.com/Huxpro/huxpro.github.io)*/
+    font-family: -apple-system, -apple-system-font, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
 }
 body {
     background: #333;
@@ -36,7 +36,8 @@ noscript.tip-overlay {
     box-sizing: border-box;
     text-align: center;
     padding: 0em 1em;
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
     position: relative;
     top: 30%;
 }
@@ -60,7 +61,8 @@ noscript.tip-overlay {
     max-width: 414px;
     min-width: 320px;
     height: 414px;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     background: url('http://7xqeox.com1.z0.glb.clouddn.com/The%20Last%20Survivor.jpg') no-repeat 50% 50%;
     background-size: contain;
 }
@@ -72,7 +74,8 @@ noscript.tip-overlay {
     box-sizing: border-box;
     width: 100%;
     padding: 8px 12px;
-    transform: translate(-50%, 0%);
+    -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
     background: rgba(255, 255, 255, .42);
     -webkit-backdrop-filter: blur(15px);
 }
@@ -88,20 +91,28 @@ noscript.tip-overlay {
 
 .slide-bar,
 .control-panel {
-	color: rgba(0, 0, 0, .64);
-	display: flex;
-	justify-content: space-between;
+    color: rgba(0, 0, 0, .64);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 .slide-bar {
     height: 25px;
-	width: 100%;
+    width: 100%;
+    -webkit-transition: color .2s cubic-bezier(0.4, 0, 1, 1) .1s, text-shadow .3s cubic-bezier(0.4, 0, 1, 1) .1s;
     transition: color .2s cubic-bezier(0.4, 0, 1, 1) .1s, text-shadow .3s cubic-bezier(0.4, 0, 1, 1) .1s;
 }
 
 .slide-bar.seeking {
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.80);
     color: #ffffff;
+    -webkit-transition: color ease-in-out 0;
     transition: color ease-in-out 0;
 }
 
@@ -135,7 +146,10 @@ noscript.tip-overlay {
 
 .slider-container {
     position: relative;
-    flex-grow: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
     height: 25px;
 }
 
@@ -197,6 +211,11 @@ noscript.tip-overlay {
     width: 100%;
     height: 3px;
     border-radius: 3px;
+    background: -webkit-linear-gradient(left,
+    rgba(255, 255, 255, .62) 0%,
+    rgba(255, 255, 255, .62) 0%,
+    rgba(0, 0, 0, .62) 0%,
+    rgba(0, 0, 0, .62) 100%);
     background: linear-gradient(90deg,
     rgba(255, 255, 255, .62) 0%,
     rgba(255, 255, 255, .62) 0%,
@@ -213,56 +232,68 @@ noscript.tip-overlay {
 
 .forward-speed, 
 .backward-speed {
-	line-height: 26px;
-	width: 15px;
-	visibility: hidden;
+    line-height: 26px;
+    width: 15px;
+    visibility: hidden;
 }
 
 .forward-speed::after, 
 .backward-speed::after {
-	content: "x";
+    content: "x";
 }
 
 .forward-speed {
-	text-align: right;
+    text-align: right;
 }
 
 .backward-speed {
-	text-align: left;
+    text-align: left;
 }
 
 .control-panel .buttons {
-	margin: 0 10px;
-	flex-grow: 1;
-	display: flex;
-	justify-content: space-between;
+    margin: 0 10px;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 .control-panel .buttons.center {
-    justify-content: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 .control-panel .buttons input {
-	-webkit-appearance: none;
-	padding: 0;
-	margin: 0;
-	border: 0 none;
-	color: transparent;
-	background-color: transparent;
-	width: 26px;
-	height: 26px;
+    -webkit-appearance: none;
+    padding: 0;
+    margin: 0;
+    border: 0 none;
+    color: transparent;
+    background-color: transparent;
+    width: 26px;
+    height: 26px;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     background-image: url("../images/player_icons_sprite.svg");
     background-size: 78px 104px;
-	background-repeat: no-repeat;
+    background-repeat: no-repeat;
 }
 
 .control-panel .buttons input:focus {
-	outline: none;
+    outline: none;
 }
 
 .control-panel .buttons input.disable {
-	cursor: default;
+    cursor: default;
 }
 
 .forward-button 
